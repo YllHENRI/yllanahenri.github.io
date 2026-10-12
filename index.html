@@ -3,10 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yllana – UX/UI Designer</title>
+  <title>Yllana Henri – UI/UX Designer</title>
+  <meta name="description" content="UI/UX Designer with a love for empathy, research and thoughtful details. Turning complexity into clear human experiences.">
+
+  <!-- Fonts: Syne (titles) + Lato (text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Syne:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <!-- "defer" = the script runs once the page is loaded -->
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-  <h1>Hello, I'm Yllana 👋</h1>
-  <p>My portfolio is coming soon.</p>
+
+  <!-- ============ NAVIGATION (fixed at the top) ============ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="index.html" class="nav__logo" aria-label="Yllana Henri – Home">
+        <img src="images/Logo_Kitsu.png" alt="" width="44" height="44">
+      </a>
+
+      <!-- Burger button, only visible on mobile -->
+      <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="sr-only">Open menu</span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="index.html" class="nav__link" aria-current="page">Home</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="resume.pdf" class="btn btn--secondary" target="_blank" rel="noopener">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <p class="hero__intro">UI/UX Designer with a love for empathy, research and thoughtful details.</p>
+        <h1 class="hero__title">Turning complexity into clear human experiences</h1>
+      </div>
+    </section>
+
+    <!-- ============ CASE STUDIES ============ -->
+    <section class="projects container" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="sr-only">Case studies</h2>
+
+      <article class="project-card">
+        <a href="projects/murmuration-website.html" class="project-card__link">
+          <div class="project-card__image">
+            <img src="images/murmuration-website.jpg" alt="" loading="lazy">
+          </div>
+          <div class="project-card__content">
+            <h3 class="project-card__title">Murmuration - Website redesign</h3>
+            <time class="project-card__date" datetime="2026-10-05">October 5, 2026</time>
+            <span class="project-card__cta" aria-hidden="true">View case study <span class="arrow">→</span></span>
+          </div>
+        </a>
+      </article>
+
+      <article class="project-card">
+        <a href="projects/murmuration-identity.html" class="project-card__link">
+          <div class="project-card__image">
+            <img src="images/murmuration-identity.jpg" alt="" loading="lazy">
+          </div>
+          <div class="project-card__content">
+            <h3 class="project-card__title">Murmuration - Visual identity</h3>
+            <time class="project-card__date" datetime="2026-10-05">October 5, 2026</time>
+            <span class="project-card__cta" aria-hidden="true">View case study <span class="arrow">→</span></span>
+          </div>
+        </a>
+      </article>
+
+      <article class="project-card">
+        <a href="projects/altered-ux-research.html" class="project-card__link">
+          <div class="project-card__image">
+            <img src="images/altered-ux-research.jpg" alt="" loading="lazy">
+          </div>
+          <div class="project-card__content">
+            <h3 class="project-card__title">Altered - UX Research</h3>
+            <time class="project-card__date" datetime="2026-10-05">October 5, 2026</time>
+            <span class="project-card__cta" aria-hidden="true">View case study <span class="arrow">→</span></span>
+          </div>
+        </a>
+      </article>
+    </section>
+
+    <!-- ============ ABOUT PREVIEW ============ -->
+    <section class="about-preview container" aria-labelledby="about-title">
+      <div class="about-preview__text">
+        <h2 id="about-title" class="section-title">Who’s behind the design?</h2>
+        <p>Hi, I’m a UI/UX Designer who loves turning complex ideas into clear, friendly, and human-centered experiences.</p>
+        <p>I design with empathy at heart, paying close attention to how people feel, understand, and interact with products. For me, good design is not just about aesthetics. It’s about clarity, accessibility, and making users feel comfortable and confident.</p>
+        <p>Naturally curious and always smiling, I enjoy collaborating closely with developers and teams, learning along the way, and building thoughtful interfaces that are both useful and enjoyable to use.</p>
+        <a href="about.html" class="btn btn--primary">Discover more about me</a>
+      </div>
+      <div class="about-preview__image">
+        <img src="images/yllana.jpg" alt="Portrait of Yllana" loading="lazy">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__left">
+        <a href="index.html" class="site-footer__brand">
+          <img src="images/Logo_Kitsu.png" alt="" width="36" height="36">
+          <span>Yllana HENRI</span>
+        </a>
+        <ul class="site-footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <!-- Replace the href with your LinkedIn profile URL -->
+      <a href="https://www.linkedin.com/in/your-profile" class="site-footer__social" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
 </body>
 </html>
