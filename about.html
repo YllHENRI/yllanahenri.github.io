@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About – Yllana Henri, UI/UX Designer</title>
+  <meta name="description" content="UI/UX designer who loves exploring how people interact with technology. Skills, tools, professional experience, education and hobbies.">
+
+  <!-- Fonts: Syne (titles) + Lato (text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Syne:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <!-- "defer" = the script runs once the page is loaded -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION (fixed at the top) ============ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="index.html" class="nav__logo" aria-label="Yllana Henri – Home">
+        <img src="images/Logo_Kitsu.png" alt="" width="44" height="44">
+      </a>
+
+      <!-- Burger button, only visible on mobile -->
+      <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="sr-only">Open menu</span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="about.html" class="nav__link" aria-current="page">About</a></li>
+        <li><a href="resume.pdf" class="btn btn--secondary" target="_blank" rel="noopener">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ ABOUT ME (text left, photo to the right edge) ============ -->
+    <section class="split">
+      <div class="split__text">
+        <h1 class="split__title">About me</h1>
+        <p>I’m a UI/UX designer who loves exploring how people interact with technology and finding ways to make those experiences simpler, clearer, and more <strong>enjoyable</strong>.</p>
+        <p>What excites me most about UX is the mix of empathy and problem-solving: listening to users, understanding their challenges, and turning that into designs that genuinely <strong>help</strong>. Every project feels like a puzzle where research, creativity, and iteration come together to make something <strong>meaningful</strong>.</p>
+        <p>Looking ahead, I want to keep growing as a designer by working on products that have <strong>real impact</strong>, collaborating with diverse teams, and contributing to <strong>solutions that improve people’s everyday lives</strong>.</p>
+      </div>
+      <div class="split__image">
+        <img src="images/about/about-me.jpg" alt="Yllana standing on rocks in front of a waterfall">
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section aria-labelledby="skills-title">
+      <div class="banner">
+        <h2 id="skills-title" class="banner__title">Skills</h2>
+      </div>
+
+      <div class="container about-section">
+        <div class="skill-group">
+          <h3 class="skill-group__title">UX Research &amp; Strategy</h3>
+          <div class="skill-grid skill-grid--4">
+            <div class="skill">
+              <h4 class="skill__title">User interviews</h4>
+              <p>Conducting user interviews is one of my favorite parts of the process. <strong>Talking directly with users</strong> helps me uncover valuable insights and understand their <strong>real needs and frustrations.</strong></p>
+            </div>
+            <div class="skill">
+              <h4 class="skill__title">Usability testing</h4>
+              <p>I really enjoy <strong>organizing and running usability tests</strong> to see how people interact with designs. It’s always exciting to observe unexpected behaviors and use those findings to <strong>make products simpler and more intuitive</strong>.</p>
+            </div>
+            <div class="skill">
+              <h4 class="skill__title">Journey mapping</h4>
+              <p>I create journey maps to <strong>visualize the user experience, identify friction points, and reveal opportunities</strong> to improve the overall flow.</p>
+            </div>
+            <div class="skill">
+              <h4 class="skill__title">Personas</h4>
+              <p>I build personas and proto-personas to define user types early in a project. They help <strong>align teams around shared goals</strong> and keep empathy at the center of every design decision.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3 class="skill-group__title">Design &amp; Prototyping</h3>
+          <div class="skill-grid skill-grid--4">
+            <div class="skill">
+              <h4 class="skill__title">Wireframing</h4>
+              <p>I create wireframes to explore structure and layout early in the process. It helps <strong>clarify ideas and align the team</strong> before focusing on visual details.</p>
+            </div>
+            <div class="skill">
+              <h4 class="skill__title">UI Design</h4>
+              <p>I design <strong>clean and accessible interfaces</strong> that combine usability with aesthetics, making sure every element has a purpose.</p>
+            </div>
+            <div class="skill">
+              <h4 class="skill__title">Design Systems</h4>
+              <p>I enjoy building and maintaining design systems that ensure <strong>consistency, scalability, and efficiency</strong> across projects.</p>
+            </div>
+            <div class="skill">
+              <h4 class="skill__title">Interaction design</h4>
+              <p>I focus on crafting <strong>intuitive interactions and smooth flows</strong> that make digital experiences feel natural and engaging.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3 class="skill-group__title">Visual Design</h3>
+          <div class="skill-grid skill-grid--3">
+            <div class="skill">
+              <h4 class="skill__title">Graphic Design</h4>
+              <p>I design <strong>digital and print materials</strong> such as leaflets, posters, and visuals that communicate ideas clearly and attractively.</p>
+            </div>
+            <div class="skill">
+              <h4 class="skill__title">Visual Identity</h4>
+              <p>I enjoy creating <strong>cohesive visual identities</strong>. From defining color palettes and typography to ensuring brand consistency across touchpoints.</p>
+            </div>
+            <div class="skill">
+              <h4 class="skill__title">Marketing material</h4>
+              <p>I create visuals for social media and other communication channels, <strong>aligning them with brand values and enhancing audience engagement</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3 class="skill-group__title">Tools</h3>
+          <div class="tools">
+            <div class="tools__row tools__row--3">
+              <div class="tool"><img src="images/about/tools/FIGMA_Logo.png" alt="" width="80" height="80"><span>Figma</span></div>
+              <div class="tool"><img src="images/about/tools/AdobeXD_Logo.png" alt="" width="80" height="80"><span>Adobe XD</span></div>
+              <div class="tool"><img src="images/about/tools/AXURE_Logo.png" alt="" width="80" height="80"><span>Axure</span></div>
+            </div>
+            <div class="tools__row tools__row--4">
+              <div class="tool"><img src="images/about/tools/PHOTOSHOP_Logo.png" alt="" width="80" height="80"><span>Photoshop</span></div>
+              <div class="tool"><img src="images//about/tools/ILLUSTRATOR_Logo.png" alt="" width="80" height="80"><span>Illustrator</span></div>
+              <div class="tool"><img src="images/about/tools/INDESIGN_Logo.png" alt="" width="80" height="80"><span>InDesign</span></div>
+              <div class="tool"><img src="images/about/tools/PREMIEREPRO_Logo.png" alt="" width="80" height="80"><span>Premiere Pro</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3 class="skill-group__title">Collaboration &amp; Workflow</h3>
+          <div class="skill-grid skill-grid--3">
+            <div class="skill">
+              <h4 class="skill__title">Agile/Scrum</h4>
+              <p>I’m familiar with <strong>Agile methodology</strong> and enjoy working in iterative sprints, aligning design work with development timelines and priorities.</p>
+            </div>
+            <div class="skill">
+              <h4 class="skill__title">Developer handoff</h4>
+              <p>I prepare detailed specs and prototypes to ensure a <strong>smooth transition from design to development</strong>, maintaining clear communication and consistency.</p>
+            </div>
+            <div class="skill">
+              <h4 class="skill__title">Cross-functional teamwork</h4>
+              <p>I enjoy <strong>collaborating</strong> with developers, product managers, and stakeholders, bringing together different perspectives to create user-centered solutions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROFESSIONAL EXPERIENCE ============ -->
+    <section aria-labelledby="experience-title">
+      <div class="banner">
+        <h2 id="experience-title" class="banner__title">Professional experience</h2>
+      </div>
+
+      <div class="container about-section experience">
+        <article class="job">
+          <div class="job__image">
+            <img src="images/about/murmuration_img.jpg" alt="" loading="lazy">
+          </div>
+          <h3 class="job__title">Murmuration SAS | 2023 - 2026</h3>
+          <p class="job__role">UI/UX Designer</p>
+          <p>At Murmuration, I worked on several internal tools and dashboards, focusing on improving usability and consistency through thoughtful design systems and user-centered research.</p>
+          <ul class="bullet-list">
+            <li>Designed and maintained the <strong>design system</strong> for internal dashboards.</li>
+            <li>Redesigned the <strong>visual identity</strong> and <strong>brand guidelines</strong>.</li>
+            <li>Conducted <strong>user research</strong> and created <strong>proto-personas</strong> to guide design decisions.</li>
+            <li>Produced <strong>high-fidelity mockups and interactive prototypes</strong> for web interfaces.</li>
+            <li>Collaborated with the <strong>dataviz front-end team</strong> to integrate new designs.</li>
+            <li>Worked closely with developers on <strong>data-driven environmental dashboards</strong>.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job__image">
+            <img src="images/about/avenria_img.jpg" alt="" loading="lazy">
+          </div>
+          <h3 class="job__title">Avenria | 2022 - 2023</h3>
+          <p class="job__role">UI/UX Designer</p>
+          <p>At Avenria, I contributed to both digital and physical design projects, combining UX research with strong visual design to enhance user engagement.</p>
+          <ul class="bullet-list">
+            <li>Improved a <strong>career guidance platform</strong> through <strong>iterative usability testing</strong>.</li>
+            <li>Designed an <strong>interactive stand</strong> (digital and physical) for events.</li>
+            <li>Created <strong>3D mockups</strong>, a cohesive <strong>visual identity</strong>, and <strong>communication materials.</strong></li>
+            <li>Developed a <strong>digital platform</strong> for the construction sector, covering research, user flows, prototyping, and testing.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section aria-labelledby="education-title">
+      <div class="banner">
+        <h2 id="education-title" class="banner__title">Education</h2>
+      </div>
+
+      <div class="container education">
+        <article class="degree">
+          <div class="degree__image">
+            <img src="images/about/ESD_img.jpg" alt="" loading="lazy">
+          </div>
+          <div class="degree__text">
+            <p class="degree__date">2023 - 2025</p>
+            <h3 class="degree__title">Master’s Degree - UI/UX Design</h3>
+            <p class="degree__school">Ecole Supérieure du Digital (ESD)</p>
+            <p>Recently graduated with a Master’s in UI/UX Design, where I specialized in creating <strong>user-centered, accessible, and sustainable digital experiences.</strong></p>
+            <ul class="bullet-list">
+              <li>User research &amp; cognitive sciences</li>
+              <li>Product design &amp; UX writing</li>
+              <li>Accessibility &amp; eco-design</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Text first, image second: alternates the layout -->
+        <article class="degree degree--reverse">
+          <div class="degree__image">
+            <img src="images/about/IST_img.jpg" alt="" loading="lazy">
+          </div>
+          <div class="degree__text">
+            <p class="degree__date">2022 - 2023</p>
+            <h3 class="degree__title">Bachelor’s Degree - Digital Project Management</h3>
+            <p class="degree__school">Institut Supérieur du Tertiaire (IST)</p>
+            <p>I developed a strong foundation in <strong>managing digital projects</strong> from concept to delivery, combining design, marketing, and technical skills.</p>
+            <ul class="bullet-list">
+              <li>UX/UI design fundamentals</li>
+              <li>Project management &amp; digital marketing</li>
+              <li>Web development basics</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="degree">
+          <div class="degree__image">
+            <img src="images/about/UGA_img.jpg" alt="" loading="lazy">
+          </div>
+          <div class="degree__text">
+            <p class="degree__date">2019 - 2022</p>
+            <h3 class="degree__title">Bachelor’s Degree - English and Japanese (LEA)</h3>
+            <p class="degree__school">Université Grenoble Alpes (UGA)</p>
+            <p>I built strong <strong>communication and analytical skills</strong> through studies in linguistics, translation, and cross-cultural communication. It gave me skills that continue to inform my design practice.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Decorative separator -->
+    <div class="banner banner--empty" aria-hidden="true"></div>
+
+    <!-- ============ HOBBIES ============ -->
+    <section class="container about-section" aria-labelledby="hobbies-title">
+      <h2 id="hobbies-title" class="hobbies__title">When I’m not designing...</h2>
+      <p class="hobbies__intro">Outside of UX, I love exploring creative hobbies that keep me inspired and curious. Whether I’m drawing, playing games, or working on a cosplay project, I enjoy expressing ideas in different ways and learning new skills along the process.</p>
+
+      <div class="hobbies">
+        <article class="hobby">
+          <div class="hobby__image"><img src="images/about/hobbies/video-games.jpg" alt="" loading="lazy"></div>
+          <h3 class="hobby__title">Video Games</h3>
+          <p>Video games were one of my very first hobbies. I spent countless hours playing with my dad, exploring worlds like <em>Metroid</em>, <em>The Legend of Zelda</em>, <em>Metal Gear Solid</em>, and even beat him at <em>Soul Calibur</em>.</p>
+          <p class="hobby__highlight">Those moments sparked my love for interactivity, storytelling, and creative world-building.</p>
+        </article>
+
+        <article class="hobby">
+          <div class="hobby__image"><img src="images/about/hobbies/drawing.jpg" alt="" loading="lazy"></div>
+          <h3 class="hobby__title">Drawing</h3>
+          <p>Drawing has always been my first passion. I’ve had a pencil in my hand for as long as I can remember! Even now, after moving into digital art, I can spend entire evenings sketching ideas and sometimes venturing into character design.</p>
+          <p class="hobby__highlight">It’s my favorite way to express imagination and emotion.</p>
+        </article>
+
+        <article class="hobby">
+          <div class="hobby__image"><img src="images/about/hobbies/board-games.jpg" alt="" loading="lazy"></div>
+          <h3 class="hobby__title">Board Games</h3>
+          <p>I absolutely love gathering with friends for board game nights. It’s a mix of fun, strategy, and storytelling that never gets old.</p>
+          <p class="hobby__highlight">And yes, I own a collection of 50 different games!</p>
+        </article>
+
+        <article class="hobby">
+          <div class="hobby__image"><img src="images/about/hobbies/role-playing.jpg" alt="" loading="lazy"></div>
+          <h3 class="hobby__title">Role-playing games</h3>
+          <p>This is one of my favorite creative playgrounds. I enjoy exploring rich worlds, embodying diverse characters with various personalities and building stories collectively.</p>
+          <p class="hobby__highlight">It’s a hobby that strengthened my empathy, storytelling and collaboration as a designer.</p>
+        </article>
+
+        <article class="hobby">
+          <div class="hobby__image"><img src="images/about/hobbies/volleyball.jpg" alt="" loading="lazy"></div>
+          <h3 class="hobby__title">Volleyball</h3>
+          <p>I joined La Manchette Rose Club, a volleyball club my friends formed, last year. It has been a revelation for me and I can’t spend a week without playing and spiking a ball. (I also created the whole brand identity and jersey)</p>
+          <p class="hobby__highlight">I love the teamwork side of this sport. Being with teammates on court and knowing you can rely on them is really a wonderful feeling.</p>
+        </article>
+
+        <article class="hobby">
+          <div class="hobby__image"><img src="images/about/hobbies/cosplay.jpg" alt="" loading="lazy"></div>
+          <h3 class="hobby__title">Cosplay</h3>
+          <p>Cosplay brings together all my favorite hobbies: drawing, sewing, crafting, and character design. I love creating costumes that bring beloved characters to life.</p>
+          <p class="hobby__highlight">For me, cosplay represents the pure essence of my creative and hands-on passions.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ THE PERSON BEHIND (photo from the left edge, text right) ============ -->
+    <section class="split split--reverse" aria-labelledby="person-title">
+      <div class="split__image">
+        <img src="images/about/yllana.jpg" alt="Yllana lit by colorful aquarium projections" loading="lazy">
+      </div>
+      <div class="split__text">
+        <h2 id="person-title" class="section-title">The person behind the Designer</h2>
+        <p>I’m someone who believes in <strong>the power of empathy, kindness, and curiosity</strong>. Both in design and in life.</p>
+        <p>People often describe me as radiant and positive, always smiling and ready to listen. I love bringing a touch of warmth to everything I do, and I find real joy in helping others, collaborating, and creating experiences that <strong>make people’s days a little brighter</strong>.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__left">
+        <a href="index.html" class="site-footer__brand">
+          <img src="images/Logo_Kitsu.png" alt="" width="36" height="36">
+          <span>Yllana HENRI</span>
+        </a>
+        <ul class="site-footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <!-- Replace the href with your LinkedIn profile URL -->
+      <a href="https://www.linkedin.com/in/your-profile" class="site-footer__social" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

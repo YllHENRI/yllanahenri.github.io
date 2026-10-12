@@ -1,0 +1,824 @@
+/* =========================================================
+   1. DESIGN TOKENS — change your colors & fonts here only
+   ========================================================= */
+:root {
+  --color-primary: #3C3F7C;                  /* titles + primary button */
+  --color-text: rgba(60, 63, 124, 0.7);      /* body text (#3C3F7C at 70%) */
+  --color-bg: #F3F1F8;                       /* page background */
+  --color-secondary: #E7D9F4;                /* secondary button + footer */
+  --color-secondary-hover: #DCC6F0;
+  --color-primary-hover: #4B4F99;
+
+  --font-title: "Syne", sans-serif;
+  --font-text: "Lato", sans-serif;
+
+  --header-height: 92px;
+  --radius: 12px;
+  --container: 1340px;
+  --ease: cubic-bezier(0.25, 0.8, 0.25, 1);  /* smooth, light easing */
+}
+
+/* =========================================================
+   2. BASE
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding-top: var(--header-height);   /* leaves room for the fixed nav */
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-text);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-title);
+  color: var(--color-primary);
+  line-height: 1.15;
+}
+
+a { color: inherit; text-decoration: none; }
+
+ul { list-style: none; margin: 0; padding: 0; }
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* Visible focus for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Hidden visually, still read by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   3. BUTTONS (CTA) + hover animation
+   ========================================================= */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.1rem;
+  border-radius: 10px;
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  transition: transform 0.25s var(--ease),
+              box-shadow 0.25s var(--ease),
+              background-color 0.25s var(--ease);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(60, 63, 124, 0.25);
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  font-weight: 400;
+}
+
+.btn--secondary:hover {
+  background: var(--color-secondary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(60, 63, 124, 0.15);
+}
+
+.btn:active { transform: translateY(0); box-shadow: none; }
+
+/* =========================================================
+   4. NAVIGATION (fixed)
+   ========================================================= */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background: var(--color-bg);
+  transition: box-shadow 0.3s var(--ease);
+}
+
+/* Added by JS once the user scrolls */
+.site-header.is-scrolled {
+  box-shadow: 0 4px 20px rgba(60, 63, 124, 0.08);
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo img { width: 44px; height: 44px; }
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 1.9rem;
+}
+
+.nav__link {
+  position: relative;
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: 1rem;
+  color: #1E1F3A;
+}
+
+/* Little underline that grows on hover */
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+
+.nav__link:hover::after,
+.nav__link[aria-current="page"]::after { transform: scaleX(1); }
+
+.nav .btn--secondary { font-family: var(--font-title); font-weight: 500; font-size: 1rem; padding: 0.85rem 1rem; }
+
+/* Burger button (mobile only) */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.nav__toggle-bar {
+  width: 24px; height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+
+/* =========================================================
+   5. HERO
+   ========================================================= */
+.hero {
+  /* Your purple smoke image; the gradient shows if the image is missing */
+  background:
+    url("../images/hero-bg.jpg") center / cover no-repeat,
+    linear-gradient(135deg, #D9D2F5 0%, #EDE6FA 50%, #D8C2EE 100%);
+  border-bottom: 2px solid rgba(60, 63, 124, 0.12);
+}
+
+.hero__inner {
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-block: 4rem;
+}
+
+.hero__intro {
+  margin: 0 0 1.75rem;
+  font-family: var(--font-title);
+  font-size: clamp(1.05rem, 1.8vw, 1.375rem);
+  color: var(--color-primary);
+  opacity: 0.85;
+}
+
+.hero__title {
+  max-width: 900px;
+  font-size: clamp(2.4rem, 5.6vw, 4.1rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* =========================================================
+   6. CASE STUDY CARDS + smooth, light hover
+   ========================================================= */
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding-block: 2.5rem 6rem;
+}
+
+.project-card__link {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.project-card__image {
+  overflow: hidden;              /* keeps the zoom inside the rounded corners */
+  border-radius: var(--radius);
+  aspect-ratio: 5 / 4;
+  background: var(--color-secondary);
+  box-shadow: 0 0 0 rgba(60, 63, 124, 0);
+  transition: box-shadow 0.5s var(--ease), transform 0.5s var(--ease);
+}
+
+.project-card__image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.project-card__title {
+  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.project-card__date {
+  display: block;
+  font-size: 1.1rem;
+}
+
+.project-card__cta {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-family: var(--font-title);
+  font-weight: 500;
+  color: var(--color-primary);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.project-card__cta .arrow {
+  display: inline-block;
+  transition: transform 0.4s var(--ease);
+}
+
+/* Hover (and keyboard focus) state */
+.project-card__link:hover .project-card__image,
+.project-card__link:focus-visible .project-card__image {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(60, 63, 124, 0.18);
+}
+
+.project-card__link:hover .project-card__image img,
+.project-card__link:focus-visible .project-card__image img {
+  transform: scale(1.03);
+}
+
+.project-card__link:hover .project-card__cta,
+.project-card__link:focus-visible .project-card__cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card__link:hover .arrow { transform: translateX(4px); }
+
+/* =========================================================
+   7. ABOUT PREVIEW
+   ========================================================= */
+.about-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding-block: 2rem 3rem;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.about-preview__text p {
+  margin: 0 0 1.6rem;
+  max-width: 34rem;
+}
+
+.about-preview__text .btn { margin-top: 0.5rem; }
+
+.about-preview__image {
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 536 / 771;
+  background: #111;
+}
+
+.about-preview__image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* =========================================================
+   8. FOOTER
+   ========================================================= */
+.site-footer {
+  margin-top: 3rem;
+  border-top: 1px solid rgba(60, 63, 124, 0.15);
+}
+
+/* ---------- Pattern background with parallax (footer + banners) ---------- */
+.site-footer,
+.banner {
+  position: relative;
+  overflow: hidden;          /* hides the extra height of the pattern layer */
+  isolation: isolate;        /* keeps the pattern layer behind the content */
+  background: var(--color-secondary);   /* plain lilac if the pattern is missing */
+}
+
+/* The pattern sits on a layer taller than the section,
+   and js/main.js slides it up/down as the page scrolls */
+.site-footer::before,
+.banner::before {
+  content: "";
+  position: absolute;
+  inset: -100px 0;
+  z-index: -1;
+  background: url("../images/footer-pattern.png") center / cover;
+  transform: translate3d(0, var(--parallax-y, 0px), 0);
+  will-change: transform;
+}
+
+.site-footer__inner {
+  min-height: 156px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.site-footer__left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.site-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+}
+
+.site-footer__links { display: flex; gap: 2rem; }
+
+.site-footer__links a {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  transition: color 0.25s var(--ease);
+}
+
+.site-footer__links a:hover,
+.site-footer__social:hover { color: var(--color-primary); }
+
+.site-footer__social {
+  color: var(--color-text);
+  transition: color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.site-footer__social:hover { transform: translateY(-2px); }
+
+/* =========================================================
+   9. ABOUT PAGE
+   ========================================================= */
+
+/* ---------- Split sections: text in the container, photo touching the screen edge ---------- */
+.split {
+  /* Lines the text up with the container edge on wide screens */
+  --edge: max(1.5rem, calc((100vw - var(--container)) / 2 + 1.5rem));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.split__text { padding: 3rem 4rem 3rem var(--edge); }
+.split--reverse .split__text { padding: 3rem var(--edge) 3rem 4rem; }
+
+.split__text p { margin: 0 0 1.5rem; max-width: 34rem; }
+.split__text p:last-child { margin-bottom: 0; }
+
+.split__title {
+  font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.split__image {
+  aspect-ratio: 445 / 478;
+  background: var(--color-secondary);   /* shows while the photo loads */
+}
+
+.split__image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Lilac banner with section title (same pattern as the footer) ---------- */
+.banner {
+  padding-block: 2.75rem;
+  text-align: center;
+}
+
+.banner__title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+}
+
+.banner--empty { padding: 0; height: 68px; }
+
+.about-section { padding-block: 2rem 4rem; }
+
+/* ---------- Skills ---------- */
+.skill-group + .skill-group { margin-top: 3rem; }
+
+.skill-group__title {
+  font-size: clamp(1.5rem, 2.4vw, 1.75rem);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.skill-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.skill-grid--4 { grid-template-columns: repeat(4, 1fr); }
+.skill-grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+.skill {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(60, 63, 124, 0.2);
+}
+
+.skill__title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+}
+
+.skill p { margin: 0; font-size: 1rem; }
+
+/* ---------- Tools ---------- */
+.tools {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tools__row { display: grid; gap: 1.5rem; }
+.tools__row--3 { grid-template-columns: repeat(3, 1fr); }
+.tools__row--4 { grid-template-columns: repeat(4, 1fr); }
+
+.tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+}
+
+.tool img {
+  width: 80px; height: 80px;
+  object-fit: contain;
+}
+
+/* ---------- Bullet lists (experience + education) ---------- */
+.bullet-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  font-size: 1rem;
+}
+
+.bullet-list li + li { margin-top: 0.3rem; }
+
+/* ---------- Professional experience ---------- */
+.experience {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.job__image {
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 420 / 333;
+  margin-bottom: 1.75rem;
+  background: var(--color-secondary);
+}
+
+.job__image img { width: 100%; height: 100%; object-fit: cover; }
+
+.job__title {
+  font-size: clamp(1.5rem, 2.4vw, 1.75rem);
+  font-weight: 600;
+}
+
+.job__role {
+  margin: 0.4rem 0 1rem;
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+.job > p { margin-top: 0; font-size: 1rem; }
+
+/* ---------- Education ---------- */
+.degree {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding-block: 1.75rem;
+}
+
+.degree + .degree { border-top: 1px solid rgba(60, 63, 124, 0.25); }
+.education { padding-bottom: 2rem; }
+
+/* Every other degree: text left, image right */
+.degree--reverse .degree__image { order: 2; }
+
+.degree__image {
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 392 / 216;
+  background: var(--color-secondary);
+}
+
+.degree__image img { width: 100%; height: 100%; object-fit: cover; }
+
+.degree__date {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.degree__title {
+  font-size: clamp(1.4rem, 2.2vw, 1.6rem);
+  font-weight: 600;
+}
+
+.degree__school {
+  margin: 1rem 0;
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+
+.degree__text > p:not([class]) { font-size: 1rem; margin: 0 0 1rem; }
+
+/* ---------- Hobbies ---------- */
+.hobbies__title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.hobbies__intro { margin: 0 0 2.5rem; max-width: 60rem; }
+
+.hobbies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem 1.5rem;
+}
+
+.hobby__image {
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 261 / 144;
+  margin-bottom: 1.5rem;
+  background: var(--color-secondary);
+}
+
+.hobby__image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.hobby:hover .hobby__image img { transform: scale(1.03); }
+
+.hobby__title {
+  font-size: clamp(1.4rem, 2.2vw, 1.6rem);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.hobby p { margin: 0 0 1.25rem; font-size: 1rem; }
+
+.hobby__highlight {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* =========================================================
+   10. RESPONSIVE
+   Desktop: 1280px and up (default styles above)
+   Tablet:  800px – 1279px
+   Mobile:  799px and below
+   ========================================================= */
+
+/* ---------- TABLET (and mobile inherits these too) ---------- */
+@media (max-width: 1279px) {
+  .container { padding-inline: 1.375rem; }
+
+  /* Hero */
+  .hero__inner {
+    min-height: 296px;
+    padding-block: 3rem;
+  }
+  .hero__intro {
+    font-size: 1.0625rem;
+    margin-bottom: 1.25rem;
+  }
+  .hero__title { font-size: 2.75rem; }
+
+  /* Case studies: image on top, text below */
+  .projects {
+    gap: 4.5rem;
+    padding-block: 2rem 4.5rem;
+  }
+  .project-card__link {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+  .project-card__image { aspect-ratio: 737 / 282; }   /* wide banner */
+  .project-card__title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .project-card__cta { display: none; }   /* not in the tablet/mobile design */
+
+  /* About: still 2 columns, smaller text */
+  .about-preview {
+    gap: 2rem;
+    padding-block: 2rem 4rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .about-preview__text p {
+    font-size: 1rem;
+    margin-bottom: 1.4rem;
+  }
+  .about-preview__text .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .about-preview__image { aspect-ratio: 352 / 516; }
+
+  /* Footer: everything stacked */
+  .site-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+    padding-block: 4rem;
+  }
+  .site-footer__left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
+  }
+  .site-footer__links {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  /* About page */
+  .split { --edge: 1.375rem; }
+  .split__text { padding-right: 2rem; }
+  .split--reverse .split__text { padding-left: 2rem; }
+  .split__text p { font-size: 1rem; }
+
+  .skill__title { font-size: 1.15rem; }
+
+  /* Tools: smaller icons */
+  .tool { gap: 1rem; font-size: 1.05rem; }
+  .tool img { width: 64px; height: 64px; }
+
+  .degree { gap: 2rem; }
+  .hobbies { gap: 3rem 1.5rem; }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 799px) {
+  /* Burger menu */
+  .nav__toggle { display: flex; }
+
+  .nav__menu {
+    position: absolute;
+    top: var(--header-height);
+    left: 0; right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem 1.375rem;
+    background: var(--color-bg);
+    box-shadow: 0 12px 24px rgba(60, 63, 124, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
+  }
+  .nav__menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Burger turns into an X when open */
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(2) { transform: translateY(7px) rotate(45deg); }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(3) { opacity: 0; }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(4) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Hero: taller, title on several lines */
+  .hero__inner { min-height: 495px; }
+  .hero__title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  /* Case studies: squarer images */
+  .project-card__image { aspect-ratio: 312 / 282; }
+  .project-card__title { font-size: 1.375rem; }
+
+  /* About: one column, photo first */
+  .about-preview { grid-template-columns: 1fr; }
+  .about-preview__image {
+    order: -1;                 /* moves the photo above the text */
+    aspect-ratio: 312 / 366;
+  }
+  .section-title { font-size: 1.375rem; }
+  .about-preview__text p { font-size: 1.0625rem; }
+
+  /* About page: everything in one column, images above text */
+  .split { grid-template-columns: 1fr; }
+  .split__text,
+  .split--reverse .split__text {
+    padding: 2rem var(--edge) 2.5rem;
+    text-align: center;
+  }
+  .split__text p { margin-inline: auto; }
+  .split__image { order: -1; aspect-ratio: 4 / 3; }
+
+  .banner { padding-block: 2rem; }
+  .banner--empty { padding: 0; height: 48px; }
+
+  .skill-grid--4,
+  .skill-grid--3 { grid-template-columns: 1fr; }
+
+  /* Tools: 3 / 2 / 2, all aligned on the same 3 columns */
+  .tools__row--4 { grid-template-columns: repeat(3, 1fr); }
+  .tools__row--4 .tool:nth-child(3) { grid-column: 1; }
+  .tool img { width: 52px; height: 52px; }
+
+  .experience { grid-template-columns: 1fr; gap: 3rem; }
+
+  .degree { grid-template-columns: 1fr; gap: 1.5rem; }
+  .degree--reverse .degree__image { order: 0; }
+
+  .hobbies { grid-template-columns: 1fr; }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
