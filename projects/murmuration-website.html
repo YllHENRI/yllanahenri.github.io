@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Murmuration Website Redesign – Yllana Henri, UI/UX Designer</title>
+  <meta name="description" content="UX case study: the full redesign of Murmuration's corporate website, focused on clarity, structure and storytelling.">
+
+  <!-- Fonts: Syne (titles) + Lato (text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Syne:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- "defer" = the scripts run once the page is loaded -->
+  <script src="../js/main.js" defer></script>
+  <script src="../js/case-study.js" defer></script>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION (fixed at the top) ============ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="../index.html" class="nav__logo" aria-label="Yllana Henri – Home">
+        <img src="../images/Logo_Kitsu.png" alt="" width="44" height="44">
+      </a>
+
+      <!-- Burger button, only visible on mobile -->
+      <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="sr-only">Open menu</span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="../index.html" class="nav__link">Home</a></li>
+        <li><a href="../about.html" class="nav__link">About</a></li>
+        <li><a href="../resume.pdf" class="btn btn--secondary" target="_blank" rel="noopener">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="cs">
+
+    <!-- ============ HERO (satellite background + website mockup) ============ -->
+    <section class="cs-hero">
+      <div class="container cs-hero__inner">
+        <h1 class="cs-hero__title">Murmuration - Website redesign</h1>
+        <div class="cs-hero__mockup">
+          <img src="../images/MurmuWebsite/hero_homepage.png" alt="Home page of the redesigned Murmuration website">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OVERVIEW ============ -->
+    <section class="container cs-block cs-overview" aria-labelledby="overview-title">
+      <div class="cs-overview__intro">
+        <h2 id="overview-title" class="cs-title">Overview</h2>
+        <p>Murmuration is a Greentech company that provides environmental data visualizations to help cities, organizations, and companies make data-driven decisions for a more sustainable future.</p>
+        <p>As the sole UX/UI Designer, I was responsible for rethinking the company’s entire digital identity: from brand guidelines to the complete redesign of its corporate website.</p>
+        <p>This case study focuses on the redesign of Murmuration’s main website, a key communication and conversion tool for the company.</p>
+      </div>
+
+      <div class="cs-summary">
+        <div class="cs-summary__item">
+          <h3 class="cs-label-title">Problem</h3>
+          <p>The old website was confusing and outdated, leaving users unsure of what Murmuration does.</p>
+        </div>
+        <div class="cs-summary__item">
+          <h3 class="cs-label-title">Solution</h3>
+          <p>A full UX redesign focused on clarity, structure and storytelling. All aligned with Murmuration’s new brand identity.</p>
+        </div>
+        <div class="cs-summary__item">
+          <h3 class="cs-label-title">Results</h3>
+          <p>Users can now clearly explain Murmuration’s mission after browsing with strong engagement across 10,000+ sessions since launch.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container cs-block cs-two-cols" aria-label="Problem and solution">
+      <div>
+        <h3 class="cs-label-title">Problem</h3>
+        <p>The previous website was outdated both visually and structurally. It suffered from poor navigation, a lack of brand consistency, and unclear messaging about the company’s purpose. Users often got lost in complex modals and unrelated content, leading to a high bounce rate and low engagement.</p>
+      </div>
+      <div>
+        <h3 class="cs-label-title">Solution</h3>
+        <p>I redesigned the entire website experience to align with Murmuration’s new brand identity and improve usability. The new design focuses on clarity, storytelling, and readability, while reinforcing the company’s dual identity: technology and environmental awareness.</p>
+        <p>The navigation was simplified with a clear side menu, a dark mode interface adapted to users’ working conditions, and structured storytelling to highlight services and impact.</p>
+      </div>
+    </section>
+
+    <!-- ============ PROJECT GOALS ============ -->
+    <section class="container cs-block" aria-labelledby="goals-title">
+      <h2 id="goals-title" class="cs-title">Project goals</h2>
+      <p class="cs-lead">Before starting the redesign, I defined a series of clear goals to guide both the design and development processes. These objectives focused on improving the user experience, reinforcing Murmuration’s new brand identity, and ensuring the website better reflected the company’s mission and values.</p>
+
+      <ul class="cs-goals">
+        <li class="cs-goal">
+          <span class="cs-eyebrow">Goal 1</span>
+          <p>Simplify the navigation and information architecture for better usability.</p>
+        </li>
+        <li class="cs-goal">
+          <span class="cs-eyebrow">Goal 2</span>
+          <p>Modernize the visual design to align with the new Murmuration brand identity.</p>
+        </li>
+        <li class="cs-goal">
+          <span class="cs-eyebrow">Goal 3</span>
+          <p>Clarify Murmuration’s mission and services through a clear, engaging storytelling flow.</p>
+        </li>
+        <li class="cs-goal">
+          <span class="cs-eyebrow">Goal 4</span>
+          <p>Improve website performance and engagement by reducing bounce rate and increasing session duration.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Everything inside .cs-body keeps the stepper stuck under the nav -->
+    <div class="cs-body">
+
+      <!-- ============ STEPPER (sticky, highlights the current step) ============ -->
+      <nav class="stepper" aria-label="Case study steps">
+        <ol class="stepper__list container">
+          <li class="stepper__item">
+            <a href="#research" class="stepper__link">
+              <span class="stepper__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+              <span class="stepper__label">Research</span>
+            </a>
+          </li>
+          <li class="stepper__item">
+            <a href="#wireframe-testing" class="stepper__link">
+              <span class="stepper__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 20V9"/></svg></span>
+              <span class="stepper__label">Wireframe &amp; Testing</span>
+            </a>
+          </li>
+          <li class="stepper__item">
+            <a href="#final-design" class="stepper__link">
+              <span class="stepper__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 1 9-9c0 2.5-2 4-4.5 4H15a1.75 1.75 0 0 0-1.3 2.9 1.25 1.25 0 0 1-.9 2.1z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/></svg></span>
+              <span class="stepper__label">Final Design</span>
+            </a>
+          </li>
+          <li class="stepper__item">
+            <a href="#final-testing" class="stepper__link">
+              <span class="stepper__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 21h4"/></svg></span>
+              <span class="stepper__label">Final Usability Testing</span>
+            </a>
+          </li>
+          <li class="stepper__item">
+            <a href="#results" class="stepper__link">
+              <span class="stepper__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 19v-4M12 19V9M17 19V5"/></svg></span>
+              <span class="stepper__label">Results &amp; Impact</span>
+            </a>
+          </li>
+          <li class="stepper__item">
+            <a href="#learnings" class="stepper__link">
+              <span class="stepper__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m15.5 13.9 1.5 7.1-5-2.8-5 2.8 1.5-7.1"/></svg></span>
+              <span class="stepper__label">Learnings &amp; Takeaways</span>
+            </a>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- ============ 1. RESEARCH ============ -->
+      <section id="research" class="cs-step" aria-labelledby="research-title">
+        <div class="banner">
+          <h2 id="research-title" class="banner__title">Research</h2>
+        </div>
+
+        <div class="container cs-block cs-split">
+          <div class="cs-split__text">
+            <p>To build an effective redesign, I first needed to understand how users perceived Murmuration and interacted with its old website.</p>
+            <p>I conducted a UX audit and competitor analysis, uncovering structural issues, unclear messaging, and navigation that often left users lost in endless modals. Using Google Analytics, I analyzed traffic, session duration, and behavior patterns to map where and how users were dropping off.</p>
+            <p>Below are the three main pain points identified during this research phase:</p>
+          </div>
+          <figure class="cs-split__media">
+            <!-- YouTube: replace VIDEO_ID with the ID of your video (the part after "watch?v=") -->
+            <div class="cs-video">
+              <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Overview of the old Murmuration website" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <figcaption class="cs-caption">Overview of the old Murmuration website home page captured on the Wayback Machine.</figcaption>
+          </figure>
+        </div>
+
+        <div class="container cs-block cs-cols cs-cols--3">
+          <article class="cs-col">
+            <span class="cs-eyebrow">Finding 1</span>
+            <h3 class="cs-col__title">Users struggled to understand what Murmuration actually did.</h3>
+            <p>Most visitors arrived on the website without a clear understanding of the company’s purpose. The content used technical vocabulary and lacked simple explanations or visual cues to clarify what Murmuration offered. As a result, users couldn’t easily identify the company’s services or its added value in the environmental data field.</p>
+            <p>This confusion often led users to leave the site prematurely, unsure of whether it matched their needs or interests.</p>
+          </article>
+          <article class="cs-col">
+            <span class="cs-eyebrow">Finding 2</span>
+            <h3 class="cs-col__title">The navigation was confusing and inconsistent.</h3>
+            <p>The old website relied heavily on modal windows, some of which opened inside other modals. This nested structure made it difficult for users to retrace their steps or explore freely.</p>
+            <p>Important information such as services, project examples, or contact details were buried deep within the site and often went unnoticed.</p>
+            <p>Users described the browsing experience as “disorienting,” and several testers said they were unsure when they had reached the end of a page or section.</p>
+          </article>
+          <article class="cs-col">
+            <span class="cs-eyebrow">Finding 3</span>
+            <h3 class="cs-col__title">Environmental indicators lacked explanation and context.</h3>
+            <p>One of Murmuration’s key strengths, its environmental data visualizations, wasn’t clearly explained.</p>
+            <p>Users saw the indicators but didn’t understand what they represented or how they connected to Murmuration’s mission.</p>
+            <p>Without a clear narrative or legend, these visuals failed to communicate their impact, leaving users confused about how Murmuration’s technology actually contributed to environmental insight.</p>
+          </article>
+        </div>
+
+        <!-- Ideation: the image opens in full screen on click -->
+        <div class="container cs-block cs-split">
+          <div class="cs-split__text">
+            <h3 class="cs-subtitle">Ideation &amp; structure</h3>
+            <p>With these insights, I began reshaping the website’s structure to focus on clarity, hierarchy, and storytelling.</p>
+            <p>I created several personas to represent the website’s core audiences, from institutional partners to environmental professionals and designed user flows that reflected their needs and goals.</p>
+            <p>A new sitemap was then built, drastically simplifying navigation and ensuring that each section of the site had a clear purpose.</p>
+          </div>
+          <div class="cs-split__media">
+            <button type="button" class="zoomable cs-media" data-lightbox>
+              <img src="../images/murmuration-website/ideation-sitemap.jpg" alt="New sitemap of the Murmuration website" loading="lazy">
+              <span class="zoomable__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+              <span class="sr-only">Open the image in full screen</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Personas: slider of 2 images, each opens in full screen -->
+        <div class="container cs-block">
+          <h3 class="cs-subtitle">Personas</h3>
+          <div class="cs-text-wide">
+            <p>To create a website that truly reflected Murmuration’s mission and connected with its audience, I developed two proto-personas from user testing results, website analytics, and contextual research. These proto-personas helped me better understand who our visitors were, what motivated them, and what obstacles they faced when exploring Murmuration’s digital platforms.</p>
+            <p>Claire, an environmental project manager, embodies the public-sector user: pragmatic, empathetic, and seeking clear, accessible insights to guide local sustainability decisions.</p>
+            <p>Marc, an operations director in the tourism sector, represents private-sector users driven by both sustainability and performance. He values visual, data-driven narratives that support strategic and economic choices.</p>
+            <p>These personas played a key role throughout the design process. They guided the structure of the navigation, the tone of the content, and the level of technical detail, ensuring every design decision remained user-centered and meaningful.</p>
+          </div>
+
+          <div class="slider" data-slider aria-roledescription="carousel" aria-label="Personas">
+            <div class="slider__stage">
+              <button type="button" class="slider__arrow slider__arrow--prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+              <div class="slider__track">
+                <div class="slider__slide" aria-roledescription="slide" aria-label="1 of 2">
+                  <button type="button" class="zoomable cs-media cs-media--slide" data-lightbox>
+                    <img src="../images/murmuration-website/persona-claire.jpg" alt="Proto-persona of Claire, environmental project manager" loading="lazy">
+                    <span class="zoomable__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                    <span class="sr-only">Open the image in full screen</span>
+                  </button>
+                </div>
+                <div class="slider__slide" aria-roledescription="slide" aria-label="2 of 2">
+                  <button type="button" class="zoomable cs-media cs-media--slide" data-lightbox>
+                    <img src="../images/murmuration-website/persona-marc.jpg" alt="Proto-persona of Marc, operations director in the tourism sector" loading="lazy">
+                    <span class="zoomable__hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                    <span class="sr-only">Open the image in full screen</span>
+                  </button>
+                </div>
+              </div>
+              <button type="button" class="slider__arrow slider__arrow--next" aria-label="Next slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+            <div class="slider__dots"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 2. WIREFRAME & TESTING ============ -->
+      <section id="wireframe-testing" class="cs-step" aria-labelledby="wireframe-title">
+        <div class="banner">
+          <h2 id="wireframe-title" class="banner__title">Wireframe &amp; Testing</h2>
+        </div>
+
+        <div class="container cs-block">
+          <div class="cs-text-wide">
+            <p>I began by translating the sitemap and user flows into low-fidelity wireframes. At this stage, the goal was clarity: focusing on layout, hierarchy, and navigation patterns without visual distractions.</p>
+            <p>These wireframes allowed the team and our users to quickly react to the information architecture before moving further.</p>
+            <p><em>Psst… don’t hesitate to scroll down the wireframes ;)</em></p>
+          </div>
+
+          <!-- Slider of 3 desktop mockups: each wireframe scrolls inside its screen -->
+          <div class="slider" data-slider aria-roledescription="carousel" aria-label="Wireframes">
+            <div class="slider__stage">
+              <button type="button" class="slider__arrow slider__arrow--prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+              <div class="slider__track">
+                <div class="slider__slide" aria-roledescription="slide" aria-label="1 of 3">
+                  <div class="browser">
+                    <div class="browser__bar" aria-hidden="true"><span></span><span></span><span></span><p class="browser__url">Home</p></div>
+                    <div class="browser__screen" tabindex="0" aria-label="Home page wireframe, scrollable">
+                      <img src="../images/murmuration-website/wireframe-home.jpg" alt="Low-fidelity wireframe of the Home page" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+                <div class="slider__slide" aria-roledescription="slide" aria-label="2 of 3">
+                  <div class="browser">
+                    <div class="browser__bar" aria-hidden="true"><span></span><span></span><span></span><p class="browser__url">Our Solutions</p></div>
+                    <div class="browser__screen" tabindex="0" aria-label="Our Solutions page wireframe, scrollable">
+                      <img src="../images/murmuration-website/wireframe-solutions.jpg" alt="Low-fidelity wireframe of the Our Solutions page" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+                <div class="slider__slide" aria-roledescription="slide" aria-label="3 of 3">
+                  <div class="browser">
+                    <div class="browser__bar" aria-hidden="true"><span></span><span></span><span></span><p class="browser__url">Our Projects</p></div>
+                    <div class="browser__screen" tabindex="0" aria-label="Our Projects page wireframe, scrollable">
+                      <img src="../images/murmuration-website/wireframe-projects.jpg" alt="Low-fidelity wireframe of the Our Projects page" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="slider__arrow slider__arrow--next" aria-label="Next slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+            <p class="cs-caption">These are the first wireframes made for the following pages: Home, Our Solutions and Our Projects.</p>
+            <div class="slider__dots"></div>
+          </div>
+        </div>
+
+        <div class="container cs-block">
+          <h3 class="cs-subtitle">First round of User testing and team feedback</h3>
+          <div class="cs-text-wide">
+            <p>Goal: Validate navigation, comprehension, and task flow.</p>
+            <p>I conducted a first round of usability tests using the low-fidelity prototypes once the content was fully written. Participants were asked to perform simple tasks such as identifying Murmuration’s mission, finding services, or locating contact information.</p>
+          </div>
+
+          <div class="cs-cols cs-cols--3">
+            <article class="cs-col">
+              <span class="cs-eyebrow">Finding 1</span>
+              <h4 class="cs-col__title">Terminology remained unclear for non-expert users</h4>
+              <p>Users liked the simplified structure, but many still struggled with certain technical terms used throughout the website.</p>
+              <p>Words related to environmental indicators or services weren’t always intuitive, which created small moments of confusion during navigation.</p>
+              <p>This made some users hesitate before clicking or exploring further.</p>
+            </article>
+            <article class="cs-col">
+              <span class="cs-eyebrow">Finding 2</span>
+              <h4 class="cs-col__title">Important content lacked visibility</h4>
+              <p>Testers often mentioned that key information such as Murmuration’s mission or the value of its services was not prominent enough.</p>
+              <p>They expected essential explanations earlier in the journey, especially on entry pages.</p>
+              <p>As a result, some users felt uncertain about where to start or what to focus on first.</p>
+            </article>
+            <article class="cs-col">
+              <span class="cs-eyebrow">Finding 3</span>
+              <h4 class="cs-col__title">The homepage needed a stronger narrative</h4>
+              <p>While the layout felt clearer, many users still couldn’t easily explain what Murmuration did after viewing the homepage.</p>
+              <p>They wanted a more guided introduction that connected the company’s mission, services, and impact in a simple way.</p>
+              <p>Without this storytelling layer, some users struggled to understand the overall purpose of the website.</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Iteration phase: embedded Figma prototype with a full screen button -->
+        <div class="container cs-block cs-split cs-split--wide-media">
+          <div class="cs-split__text">
+            <h3 class="cs-subtitle">Iteration phase</h3>
+            <p>The Indicators page went through several rounds of iteration, as testers initially struggled to understand the meaning and relevance of Murmuration’s environmental indicators.</p>
+            <p>I explored multiple layout proposals to clarify the hierarchy, improve the explanations, and make the visuals easier to interpret.</p>
+            <p>These iterations focused on:</p>
+            <ul class="bullet-list">
+              <li>Highlighting key indicators</li>
+              <li>Adding clearer descriptions</li>
+              <li>Reorganizing sections for better readability</li>
+              <li>Strengthening the connection between data and real-world impact</li>
+            </ul>
+          </div>
+          <figure class="cs-split__media">
+            <div class="prototype">
+              <!-- Figma: Share > "Copy link" on your prototype, then paste it
+                   1. URL-encoded after "url=" in the iframe src (or paste the src from Share > "Get embed code")
+                   2. as is in the href of the full screen link below -->
+              <iframe src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fproto%2FYOUR_FILE_KEY" title="Figma prototype of the Indicators page iterations" loading="lazy" allowfullscreen></iframe>
+              <a href="https://www.figma.com/proto/YOUR_FILE_KEY" class="prototype__fullscreen" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                <span class="prototype__fullscreen-label">Full screen</span>
+              </a>
+            </div>
+            <figcaption class="cs-caption">Open the prototype in full screen to navigate through it :)</figcaption>
+          </figure>
+        </div>
+
+        <div class="container cs-block cs-split cs-split--reverse">
+          <div class="cs-split__text">
+            <p>During the redesign, the need for a more intuitive and impactful structure emerged.</p>
+            <p>To improve navigation clarity and support a smoother user journey, I decided to introduce a side menu.</p>
+            <p>This choice also aligned the corporate website with Murmuration’s new dashboard ecosystem, creating visual and functional consistency for users familiar with the product.</p>
+          </div>
+          <div class="cs-split__media cs-media">
+            <img src="../images/murmuration-website/side-menu.jpg" alt="The new side menu of the Murmuration website" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 3. FINAL DESIGN ============ -->
+      <section id="final-design" class="cs-step" aria-labelledby="final-design-title">
+        <div class="banner">
+          <h2 id="final-design-title" class="banner__title">Final Design</h2>
+        </div>
+
+        <!-- Scrollable desktop mockup of the high-fidelity design -->
+        <div class="container cs-block cs-split">
+          <div class="cs-split__text">
+            <h3 class="cs-subtitle">Bringing the New visual identity Into the Interface</h3>
+            <p>Once the structure was validated, I moved to high-fidelity mockups.</p>
+            <p>The goal was to apply Murmuration’s new visual identity: dark mode, gradients, and neon accents while keeping the interface clear and accessible.</p>
+            <p>This helped create a consistent experience across both the website and Murmuration’s dashboards.</p>
+          </div>
+          <figure class="cs-split__media">
+            <div class="browser">
+              <div class="browser__bar" aria-hidden="true"><span></span><span></span><span></span><p class="browser__url">Home</p></div>
+              <div class="browser__screen" tabindex="0" aria-label="High-fidelity home page, scrollable">
+                <img src="../images/murmuration-website/hifi-home.jpg" alt="High-fidelity mockup of the new Murmuration home page" loading="lazy">
+              </div>
+            </div>
+            <figcaption class="cs-caption">Psst… scroll down the mockup to explore the whole page ;)</figcaption>
+          </figure>
+        </div>
+
+        <div class="container cs-block">
+          <h3 class="cs-subtitle">Strengthening Visual Hierarchy and Storytelling</h3>
+          <div class="cs-text-wide">
+            <p>At this stage, I focused on refining the hierarchy, spacing, and tone of each page.</p>
+            <p>Key sections such as the homepage, services, and indicators received stronger visual cues and clearer narrative blocks to help users quickly understand Murmuration’s mission and value.</p>
+          </div>
+          <!-- YouTube: replace VIDEO_ID with the ID of your video (the part after "watch?v=") -->
+          <div class="cs-video">
+            <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Walkthrough of the final Murmuration website" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="container cs-block">
+          <h3 class="cs-subtitle">Ensuring Clarity, comfort and Readability</h3>
+          <p class="cs-text-wide">To ensure readability and visual comfort, I paid particular attention to contrast, typography, and spacing throughout the high-fidelity design. The dark interface was carefully balanced with high-contrast text and accent colors to improve legibility in indoor and low-light environments while reducing visual fatigue. I established a clear typographic hierarchy to guide the eye through content and make scanning effortless, reinforcing key information without overwhelming the user. Finally, I increased and standardized spacing between sections, components, and text blocks to give the layout more clarity and breathing room, helping to reduce cognitive load and create a more comfortable and accessible browsing experience.</p>
+        </div>
+      </section>
+
+      <!-- ============ 4. FINAL USABILITY TESTING ============ -->
+      <section id="final-testing" class="cs-step" aria-labelledby="final-testing-title">
+        <div class="banner">
+          <h2 id="final-testing-title" class="banner__title">Final Usability Testing</h2>
+        </div>
+
+        <div class="container cs-block">
+          <p class="cs-text-wide">Due to time and context constraints, I wasn’t able to organize large-scale usability testing with full external users. Instead, I conducted a final round of tests with 9 participants, including coworkers and volunteers from the Athome community at La Cité. While not fully representative, this approach still allowed me to validate key assumptions and gather qualitative feedback on the final version of the website.</p>
+
+          <h3 class="cs-subtitle">Testing goals</h3>
+          <div class="cs-cols cs-cols--3">
+            <article class="cs-col">
+              <h4 class="cs-col__title">Understanding of Murmuration’s mission and services</h4>
+              <p>Ensure that users quickly understand what Murmuration does, what it offers and the value of its environmental data solutions after navigating the website.</p>
+            </article>
+            <article class="cs-col">
+              <h4 class="cs-col__title">Navigation fluidity and user experience</h4>
+              <p>Validate that users can move through the website smoothly and intuitively with a clear sense of orientation and comfort while exploring key sections.</p>
+            </article>
+            <article class="cs-col">
+              <h4 class="cs-col__title">Perception of the interface and visual identity</h4>
+              <p>Assess how users perceive the overall design, visual coherence and brand identity and whether the interface feels engaging, professional and distinctive.</p>
+            </article>
+          </div>
+
+          <h3 class="cs-subtitle">Key Outcomes</h3>
+          <div class="cs-cols cs-cols--4">
+            <div class="cs-col"><p>All participants were able to clearly explain what Murmuration does and what services it offers after navigating the website.</p></div>
+            <div class="cs-col"><p>Navigation was described as fluid and intuitive, with particular appreciation for the “Indicators” and “Services” pages.</p></div>
+            <div class="cs-col"><p>The interface and visual identity were perceived as coherent, distinctive and professional, reinforcing Murmuration’s brand positioning.</p></div>
+            <div class="cs-col"><p>Several users also mentioned a sense of visual enjoyment, especially when interacting with the special pages of “Indicators” and “Services”, highlighting the impact of the new design direction.</p></div>
+          </div>
+
+          <h3 class="cs-subtitle">Limitations and Areas for Improvement</h3>
+          <div class="cs-text-wide">
+            <p>This testing phase also helped identify opportunities for further refinement as some participants suggested:</p>
+            <ul class="bullet-list">
+              <li>Increasing spacing in certain sections to improve readability.</li>
+              <li>Strengthening storytelling to guide users more progressively through content.</li>
+              <li>Improving consistency across icons and visual cues.</li>
+              <li>Adding more subtle visual guidance to help users navigate complex information.</li>
+            </ul>
+            <p>These insights highlighted clear opportunities for future iterations, reinforcing the idea that the website can continue to evolve and improve over time.</p>
+          </div>
+        </div>
+
+        <figure class="container cs-quote">
+          <blockquote>
+            <p>“I really enjoyed navigating the website. Everything feels smooth and well thought out, and I didn’t feel lost at any point. The design makes you want to explore more.”</p>
+          </blockquote>
+          <figcaption>Usability testing participant</figcaption>
+        </figure>
+      </section>
+
+      <!-- ============ 5. RESULTS & IMPACT ============ -->
+      <section id="results" class="cs-step" aria-labelledby="results-title">
+        <div class="banner">
+          <h2 id="results-title" class="banner__title">Results &amp; Impact</h2>
+        </div>
+
+        <div class="container cs-block">
+          <div class="cs-text-wide">
+            <p>The redesign of Murmuration’s website had a clear and positive impact on both user understanding and engagement.</p>
+            <p>By simplifying the structure, strengthening storytelling, and aligning the interface with the new visual identity, the website became a more effective communication and discovery tool.</p>
+          </div>
+
+          <h3 class="cs-subtitle">User Impact</h3>
+          <div class="cs-text-wide">
+            <ul class="bullet-list">
+              <li>Users were able to clearly explain Murmuration’s mission and services after navigating the website.</li>
+              <li>Navigation felt fluid and intuitive, with particular appreciation for the Indicators and Services sections.</li>
+              <li>The interface was perceived as professional, coherent, and visually engaging, reinforcing trust in the brand.</li>
+            </ul>
+            <p>These results confirmed that the redesign successfully reduced confusion and improved overall comprehension.</p>
+          </div>
+
+          <h3 class="cs-subtitle">Engagement &amp; Performance</h3>
+          <p class="cs-text-wide">Since the launch of the new website (June 2024 - today), performance metrics show a significant improvement in engagement.</p>
+
+          <dl class="cs-cols cs-cols--3 cs-stats">
+            <div class="cs-col">
+              <dt class="cs-stat__value">6&nbsp;226 users</dt>
+              <dd class="cs-stat__label">And 10&nbsp;152 sessions</dd>
+            </div>
+            <div class="cs-col">
+              <dt class="cs-stat__value">3min 34s</dt>
+              <dd class="cs-stat__label">Average session duration</dd>
+            </div>
+            <div class="cs-col">
+              <dt class="cs-stat__value">1.94</dt>
+              <dd class="cs-stat__label">Pages seen per session</dd>
+            </div>
+          </dl>
+
+          <p class="cs-text-wide">These figures indicate that users now spend more time exploring the website and engaging with its content. This is a strong signal of a more effective, engaging user flow compared to the disengagement patterns identified during the initial research phase.</p>
+
+          <h3 class="cs-subtitle">Internal business impact</h3>
+          <div class="cs-text-wide">
+            <p>Beyond user-facing improvements, the redesign also brought internal benefits:</p>
+            <ul class="bullet-list">
+              <li>A clear and consistent structure that is easier to maintain and evolve over time.</li>
+              <li>Better alignment between the corporate website and Murmuration’s dashboard ecosystem.</li>
+              <li>A stronger visual identity that supports communication, partnerships, and credibility within the Greentech sector.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 6. LEARNINGS & TAKEAWAYS ============ -->
+      <section id="learnings" class="cs-step" aria-labelledby="learnings-title">
+        <div class="banner">
+          <h2 id="learnings-title" class="banner__title">Learnings &amp; Takeaways</h2>
+        </div>
+
+        <div class="container cs-block cs-split cs-split--reverse">
+          <div class="cs-split__text">
+            <h3 class="cs-subtitle">Growing as a Designer through Independence</h3>
+            <p>This project was my first real experience at Murmuration and also my first time working as the sole designer within a small team. Without a tutor or senior designer to guide me, I had to make decisions independently, find answers on my own, and learn directly from real constraints. While this was sometimes challenging, it became one of the most formative experiences of my journey, helping me gain confidence, autonomy, and professional maturity.</p>
+            <p>I learned that in real-world projects, UX theory must often be adapted to the context, taking into account business goals, technical limitations, budget, and stakeholder expectations. This experience taught me how to balance user-centered design with practical realities.</p>
+          </div>
+          <div class="cs-split__media cs-media">
+            <img src="../images/murmuration-website/learning-independence.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+
+        <div class="container cs-block cs-split">
+          <div class="cs-split__text">
+            <h3 class="cs-subtitle">Challenges faced</h3>
+            <p>Being the only designer was the biggest challenge. I had to navigate uncertainty, justify my design decisions, and sometimes compromise when UX principles conflicted with business or communication goals.</p>
+            <p>Another key challenge was making technical, data-oriented content understandable to non-expert users. Thanks to close collaboration with engineers, I learned how to translate complex environmental data into clearer, more accessible experiences.</p>
+            <p>This project also taught me a valuable lesson about collaboration: explaining UX choices clearly, listening to feedback, and finding common ground is an essential part of working in a company environment.</p>
+          </div>
+          <div class="cs-split__media cs-media">
+            <img src="../images/murmuration-website/learning-challenges.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+
+        <div class="container cs-block cs-split cs-split--reverse">
+          <div class="cs-split__text">
+            <h3 class="cs-subtitle">What I’m most proud of</h3>
+            <p>What made this project particularly rewarding was the positive feedback from usability testing. Hearing that users found the website readable, intuitive, and even enjoyable to explore reinforced the value of small UX decisions such as spacing, hierarchy, and clarity.</p>
+            <p>I’m also very proud of the collaboration with the developer. We worked closely throughout the project, communicated constantly, and solved problems together. This collaboration helped me better understand technical constraints, contributed to smoother implementation, and even led me to participate in maintenance and technical adjustments after launch.</p>
+          </div>
+          <div class="cs-split__media cs-media">
+            <img src="../images/murmuration-website/learning-proud.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+
+        <div class="container cs-block cs-split">
+          <div class="cs-split__text">
+            <h3 class="cs-subtitle">What I would do differently</h3>
+            <p>With hindsight, I would dedicate even more time to UX thinking before interface design. While visual design and UX go hand in hand, I would focus more on fewer, more deeply thought-through design solutions rather than multiple visual variations.</p>
+            <p>Accessibility guided contrast and readability throughout this project, but with hindsight, I’d want to push it further by integrating things like screen-reader support and keyboard navigation earlier in the process, not just visual clarity.</p>
+          </div>
+          <div class="cs-split__media cs-media">
+            <img src="../images/murmuration-website/learning-differently.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+
+        <div class="container cs-block">
+          <figure class="cs-thoughts">
+            <figcaption class="cs-thoughts__header">
+              <span class="cs-thoughts__name">Yllana Henri</span>
+              <span class="cs-thoughts__role">Final thoughts</span>
+              <svg class="cs-thoughts__icon" viewBox="0 0 48 32" aria-hidden="true"><rect x="8" y="1" width="12" height="30" rx="6" transform="rotate(28 14 16)"/><rect x="28" y="1" width="12" height="30" rx="6" transform="rotate(28 34 16)"/></svg>
+            </figcaption>
+            <blockquote>
+              <p>This project reinforced my belief that good UX design is not only about following best practices, but about adapting, listening, and growing through real constraints.</p>
+              <p>Working independently pushed me out of my comfort zone, but it also helped me understand how much I enjoy problem-solving, collaborating across disciplines, and turning complex challenges into clear and meaningful experiences.</p>
+            </blockquote>
+          </figure>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============ READ MORE (filled by js/case-study.js from the list of online case studies) ============ -->
+    <section class="container cs-more" aria-labelledby="more-title">
+      <h2 id="more-title" class="cs-more__title">Read more of my case studies</h2>
+      <div class="slider slider--cards" data-slider aria-roledescription="carousel" aria-label="Other case studies">
+        <div class="slider__stage">
+          <button type="button" class="slider__arrow slider__arrow--prev" aria-label="Previous case studies"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+          <div class="slider__track" id="more-case-studies" data-current="murmuration-website" data-root="../"></div>
+          <button type="button" class="slider__arrow slider__arrow--next" aria-label="Next case studies"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+        <div class="slider__dots"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__left">
+        <a href="../index.html" class="site-footer__brand">
+          <img src="../images/Logo_Kitsu.png" alt="" width="36" height="36">
+          <span>Yllana HENRI</span>
+        </a>
+        <ul class="site-footer__links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </div>
+      <!-- Replace the href with your LinkedIn profile URL -->
+      <a href="https://www.linkedin.com/in/your-profile" class="site-footer__social" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

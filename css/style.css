@@ -259,12 +259,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 .project-card__title {
   font-size: clamp(1.6rem, 2.8vw, 2.25rem);
   font-weight: 600;
-  margin-bottom: 1.5rem;
-}
-
-.project-card__date {
-  display: block;
-  font-size: 1.1rem;
 }
 
 .project-card__cta {
@@ -643,7 +637,668 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 /* =========================================================
-   10. RESPONSIVE
+   10. CASE STUDY PAGES
+   ========================================================= */
+.cs { --overlap: 10rem; }   /* how far the hero mockup hangs below the hero background */
+
+.cs p { margin: 0 0 1rem; font-size: 1rem; }
+.cs p:last-child { margin-bottom: 0; }
+.cs .bullet-list { margin: 0 0 1rem; }
+
+.cs-block { padding-block: 3rem; }
+
+/* ---------- Titles ---------- */
+.cs-title {
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+}
+
+.cs-subtitle {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* Titles that come after a block of text in the same section */
+.cs-block > * + .cs-subtitle { margin-top: 3.5rem; }
+
+.cs-label-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+}
+
+/* Small uppercase label: "GOAL 1", "FINDING 2"... */
+.cs-eyebrow {
+  display: block;
+  margin-bottom: 0.9rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.cs-lead,
+.cs-text-wide { max-width: 72rem; }
+
+.cs-text-wide + .slider,
+.cs-text-wide + .cs-cols,
+.cs-text-wide + .cs-video { margin-top: 3rem; }
+
+.cs .cs-caption {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  font-style: italic;
+  text-align: center;
+}
+
+/* ---------- Hero: title on the satellite image, mockup overlapping below ---------- */
+.cs-hero {
+  background:
+    linear-gradient(rgba(10, 40, 35, 0.3), rgba(10, 40, 35, 0.3)),   /* keeps the white title readable */
+    url("../images/MurmuWebsite/hero_desktop.jpg") center / cover no-repeat,
+    linear-gradient(160deg, #1D4D43 0%, #0F2E2A 100%);
+}
+
+.cs-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 7.5rem;
+}
+
+.cs-hero__title {
+  max-width: 40rem;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 600;
+  color: #fff;
+}
+
+
+.cs-hero__mockup {
+  position: relative;          /* stays above the next section */
+  width: min(100%, 960px);
+  margin: 6.5rem 0 calc(-1 * var(--overlap));
+  padding: 8px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 24px 50px rgba(15, 30, 40, 0.25);
+}
+
+.cs-hero__mockup img { width: 100%; border-radius: 18px; }
+
+/* ---------- Overview ---------- */
+.cs-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding-top: calc(var(--overlap) + 4rem);
+}
+
+.cs-overview__intro p { max-width: 30rem; }
+
+.cs-summary__item + .cs-summary__item {
+  margin-top: 1.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(60, 63, 124, 0.2);
+}
+
+.cs-summary .cs-label-title { margin-bottom: 0.5rem; }
+
+.cs-two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding-block: 5rem;
+}
+
+/* ---------- Project goals (white cards) ---------- */
+.cs-goals {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  align-items: start;
+  margin-top: 4rem;
+}
+
+.cs-goal {
+  padding: 2rem;
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(60, 63, 124, 0.06);
+}
+
+.cs .cs-goal p {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  line-height: 1.45;
+  color: var(--color-primary);
+}
+
+/* ---------- Columns with a top line (findings, goals, outcomes, stats) ---------- */
+.cs-cols {
+  display: grid;
+  gap: 3rem;
+  margin: 0;
+}
+
+.cs-cols--3 { grid-template-columns: repeat(3, 1fr); }
+.cs-cols--4 { grid-template-columns: repeat(4, 1fr); }
+
+.cs-col {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(60, 63, 124, 0.2);
+}
+
+.cs-col__title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.cs-stats { margin-block: 3rem; }
+.cs-stats dd { margin: 0; }
+
+.cs-stat__value {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.cs-stat__label { font-size: 1.2rem; }
+
+/* ---------- Text + media side by side ---------- */
+.cs-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.cs-split--wide-media { grid-template-columns: 5fr 8fr; }
+
+/* Media on the left (text stays first in the HTML, so first on mobile) */
+.cs-split--reverse .cs-split__media { order: -1; }
+
+.cs-split__media { margin: 0; min-width: 0; }
+
+/* ---------- Media boxes ---------- */
+.cs-media {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 544 / 431;
+  background: var(--color-secondary);   /* shows while the image loads */
+}
+
+.cs-media img { width: 100%; height: 100%; object-fit: cover; }
+
+.cs-media--slide { aspect-ratio: 992 / 557; }
+
+/* Image that opens in full screen on click */
+.zoomable {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  cursor: zoom-in;
+}
+
+.zoomable img { transition: transform 0.6s var(--ease); }
+.zoomable:hover img { transform: scale(1.03); }
+
+.zoomable__hint {
+  position: absolute;
+  right: 1rem; bottom: 1rem;
+  display: grid;
+  place-items: center;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-primary);
+  box-shadow: 0 4px 14px rgba(60, 63, 124, 0.2);
+  transition: transform 0.3s var(--ease);
+}
+
+.zoomable:hover .zoomable__hint { transform: scale(1.08); }
+
+.zoomable__hint svg,
+.prototype__fullscreen svg,
+.lightbox__close svg,
+.slider__arrow svg {
+  width: 20px; height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* YouTube videos */
+.cs-video {
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 16 / 9;
+  background: #1E1F3A;
+}
+
+.cs-video iframe,
+.prototype iframe {
+  display: block;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
+/* Figma prototype with its full screen button */
+.prototype {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 16 / 11;
+  background: #1E1F3A;
+}
+
+.prototype:fullscreen { border-radius: 0; }
+
+.prototype__fullscreen {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 16px rgba(30, 31, 58, 0.25);
+  transition: background-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.prototype__fullscreen:hover {
+  background: var(--color-secondary-hover);
+  transform: translateY(-2px);
+}
+
+/* Desktop screen mockup with a scrollable page inside */
+.browser {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(60, 63, 124, 0.12);
+}
+
+.browser__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding-inline: 14px;
+  background: #E9E7F1;
+}
+
+.browser__bar span {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(60, 63, 124, 0.25);
+}
+
+.cs .browser__url {
+  flex: 1;
+  margin: 0 0 0 0.75rem;
+  font-size: 0.8rem;
+  color: var(--color-text);
+}
+
+.browser__screen {
+  aspect-ratio: 16 / 9;           /* desktop screen proportions */
+  overflow-y: auto;
+  overscroll-behavior-y: auto;     /* at the end, the page keeps scrolling */
+  background: var(--color-secondary);
+}
+
+.browser__screen img { width: 100%; height: auto; }
+
+.browser__screen:focus-visible { outline-offset: -3px; }
+
+/* ---------- Quote ---------- */
+.cs-quote {
+  margin: 0 auto;
+  padding-block: 5rem 6rem;
+  text-align: center;
+}
+
+.cs-quote blockquote { margin: 0 auto; max-width: 66rem; }
+
+.cs .cs-quote p {
+  font-family: var(--font-title);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-primary);
+}
+
+.cs-quote figcaption {
+  margin-top: 2.5rem;
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+}
+
+/* ---------- Final thoughts card ---------- */
+.cs-thoughts {
+  max-width: 50rem;
+  margin: 2rem auto 0;
+  padding: 2rem;
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(60, 63, 124, 0.08);
+}
+
+.cs-thoughts__header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-title);
+}
+
+.cs-thoughts__name { font-weight: 500; color: var(--color-primary); }
+.cs-thoughts__role { font-size: 0.95rem; }
+
+.cs-thoughts__icon {
+  position: absolute;
+  top: 0; right: 0;
+  width: 48px;
+  fill: var(--color-secondary);
+}
+
+.cs-thoughts blockquote { margin: 0; }
+
+.cs .cs-thoughts p {
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  color: var(--color-primary);
+}
+
+.cs .cs-thoughts p:last-child { margin-bottom: 0; }
+
+/* ---------- Sticky stepper ---------- */
+.stepper {
+  --circle: 56px;
+  position: sticky;
+  top: var(--header-height);
+  z-index: 90;
+  padding-block: 0.75rem;
+  background: var(--color-bg);
+  transition: box-shadow 0.3s var(--ease);
+}
+
+.stepper.is-stuck { box-shadow: 0 4px 20px rgba(60, 63, 124, 0.08); }
+
+/* The nav drops its own shadow while the stepper is stuck under it */
+.site-header.is-merged { box-shadow: none; }
+
+.stepper__list {
+  list-style: none;
+  margin-block: 0;
+  padding-block: 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.stepper__item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Line linking each step to the previous one */
+.stepper__item + .stepper__item::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--circle) / 2);
+  left: calc(-50% + var(--circle) / 2 + 12px);
+  right: calc(50% + var(--circle) / 2 + 12px);
+  height: 1px;
+  background: rgba(60, 63, 124, 0.45);
+  transition: background-color 0.3s var(--ease);
+}
+
+.stepper__item.is-done::before,
+.stepper__item.is-active::before { background: var(--color-primary); height: 2px; }
+
+.stepper__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.stepper__icon {
+  display: grid;
+  place-items: center;
+  width: var(--circle); height: var(--circle);
+  border: 1.5px solid rgba(60, 63, 124, 0.45);
+  border-radius: 50%;
+  background: var(--color-bg);
+  color: var(--color-primary);
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease),
+              color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.stepper__icon svg {
+  width: 40%; height: 40%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stepper__label {
+  font-size: 0.95rem;
+  line-height: 1.25;
+  transition: color 0.3s var(--ease);
+}
+
+.stepper__link:hover .stepper__icon { transform: translateY(-2px); border-color: var(--color-primary); }
+
+.stepper__item.is-done .stepper__icon {
+  border-color: var(--color-primary);
+  background: var(--color-secondary);
+}
+
+.stepper__item.is-active .stepper__icon {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.stepper__item.is-active .stepper__label {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Clicking a step stops the section right under the nav + stepper */
+.cs-step { scroll-margin-top: calc(var(--header-height) + var(--stepper-height, 0px)); }
+
+/* ---------- Sliders ---------- */
+.slider {
+  --per-view: 1;    /* slides visible at once */
+  --gap: 1.5rem;
+}
+
+.slider__stage {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.slider__track {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;          /* the arrows and dots replace the scrollbar */
+}
+
+.slider__track::-webkit-scrollbar { display: none; }
+
+.slider__slide {
+  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.slider__arrow {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 46px; height: 46px;
+  padding: 0;
+  border: 1px solid rgba(60, 63, 124, 0.2);
+  border-radius: 50%;
+  background: #fff;
+  color: #1E1F3A;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease), transform 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+
+.slider__arrow:hover:not(:disabled) { background: var(--color-secondary); transform: scale(1.05); }
+
+.slider__arrow:disabled {
+  background: #DCDBE3;
+  color: #9C9BAE;
+  cursor: default;
+}
+
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: max-content;
+  margin: 1.5rem auto 0;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #DCDBE3;
+}
+
+.slider__dot {
+  width: 9px; height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #A9A8BC;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease), width 0.25s var(--ease);
+}
+
+.slider__dot[aria-current="true"] { width: 22px; background: #55546B; }
+
+/* All the slides fit: no arrows, no dots, slides share the width */
+.slider.is-static .slider__arrow,
+.slider.is-static .slider__dots { display: none; }
+.slider.is-static .slider__slide { flex: 1 1 0; }
+
+/* ---------- Read more of my case studies ---------- */
+.cs-more { padding-block: 5rem 4rem; }
+
+.cs-more__title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.slider--cards { --per-view: 3; --gap: 2rem; }
+
+.more-card__link { display: block; }
+
+.more-card__image {
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 560 / 308;
+  margin-bottom: 1.5rem;
+  background: var(--color-secondary);
+  transition: box-shadow 0.5s var(--ease), transform 0.5s var(--ease);
+}
+
+.more-card__image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.more-card__link:hover .more-card__image,
+.more-card__link:focus-visible .more-card__image {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(60, 63, 124, 0.18);
+}
+
+.more-card__link:hover .more-card__image img { transform: scale(1.03); }
+
+.more-card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Full screen image (lightbox) ---------- */
+.lightbox {
+  width: 100%; height: 100%;
+  max-width: none; max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox::backdrop { background: rgba(20, 21, 48, 0.9); }
+
+.lightbox__image {
+  max-width: 94vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: default;
+}
+
+.lightbox__close {
+  position: fixed;
+  top: 1.25rem; right: 1.25rem;
+  display: grid;
+  place-items: center;
+  width: 46px; height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* No page scroll behind the open lightbox */
+body:has(.lightbox[open]) { overflow: hidden; }
+
+/* =========================================================
+   11. RESPONSIVE
    Desktop: 1280px and up (default styles above)
    Tablet:  800px – 1279px
    Mobile:  799px and below
@@ -732,6 +1387,28 @@ ul { list-style: none; margin: 0; padding: 0; }
 
   .degree { gap: 2rem; }
   .hobbies { gap: 3rem 1.5rem; }
+
+  /* Case study */
+  .cs { --overlap: 6rem; }
+  .cs-hero__inner { padding-top: 5rem; }
+  .cs-hero__mockup { margin-top: 4rem; padding: 6px; border-radius: 18px; }
+  .cs-hero__mockup img { border-radius: 13px; }
+
+  .cs-overview,
+  .cs-two-cols,
+  .cs-split { gap: 2.5rem; }
+  .cs-split--wide-media { grid-template-columns: 1fr 1fr; }
+
+  .cs-goals { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .cs-cols { gap: 2rem; }
+  .cs-cols--4 { grid-template-columns: repeat(2, 1fr); }
+  .cs-col__title { font-size: 1.2rem; }
+
+  .stepper { --circle: 48px; }
+  .stepper__label { font-size: 0.85rem; max-width: 7rem; }
+
+  .slider__stage { gap: 1rem; }
+  .slider--cards { --per-view: 2; --gap: 1.5rem; }
 }
 
 /* ---------- MOBILE ---------- */
@@ -812,6 +1489,51 @@ ul { list-style: none; margin: 0; padding: 0; }
   .degree--reverse .degree__image { order: 0; }
 
   .hobbies { grid-template-columns: 1fr; }
+
+  /* Case study: everything in one column */
+  .cs { --overlap: 3rem; }
+  .cs-hero__inner { padding-top: 3.5rem; }
+  .cs-hero__title { font-size: 2.25rem; }
+  .cs-hero__mockup { margin-top: 2.5rem; padding: 4px; border-radius: 12px; }
+  .cs-hero__mockup img { border-radius: 9px; }
+
+  .cs-block { padding-block: 2.25rem; }
+  .cs-title { margin-bottom: 1.5rem; }
+
+  .cs-overview,
+  .cs-two-cols,
+  .cs-split,
+  .cs-split--wide-media { grid-template-columns: 1fr; gap: 2rem; }
+  .cs-two-cols { padding-block: 2.25rem; }
+  .cs-split--reverse .cs-split__media { order: 0; }
+
+  .cs-goals,
+  .cs-cols--3,
+  .cs-cols--4 { grid-template-columns: 1fr; }
+  .cs-goals { margin-top: 2rem; }
+
+  /* Stepper: icons only, the step titles are in the banners */
+  .stepper { --circle: 38px; padding-block: 0.75rem; }
+  .stepper__item + .stepper__item::before {
+    left: calc(-50% + var(--circle) / 2 + 4px);
+    right: calc(50% + var(--circle) / 2 + 4px);
+  }
+  .stepper__label {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* Sliders: swipe + dots, no side arrows */
+  .slider__arrow { display: none; }
+  .slider--cards { --per-view: 1; }
+
+  .prototype { aspect-ratio: 4 / 3; }
+  .cs-quote { padding-block: 3rem 4rem; }
+  .cs-thoughts { padding: 1.5rem; }
+  .cs-more { padding-block: 3rem; }
 }
 
 /* Respect users who prefer less motion */
