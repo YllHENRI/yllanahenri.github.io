@@ -191,7 +191,109 @@
   });
 
 
-  /* ---------- 6. Sticky stepper that follows the reading ---------- */
+  /* ---------- 6. Mockups with zoom + full screen (still scrollable) ---------- */
+
+  const ZOOM_LEVELS = [1, 1.5, 2, 3];   // 1 = the page fits the width of the screen
+
+  document.querySelectorAll("[data-viewer]").forEach((viewer) => {
+    const screen = viewer.querySelector(".browser__screen");
+    const image = screen.querySelector("img");
+    const zoomOut = viewer.querySelector('[data-zoom="out"]');
+    const zoomIn = viewer.querySelector('[data-zoom="in"]');
+    const zoomLabel = viewer.querySelector(".browser__zoom");
+    const fullscreenButton = viewer.querySelector("[data-fullscreen]");
+    const enterFullscreen = viewer.requestFullscreen || viewer.webkitRequestFullscreen;
+    let level = 0;
+
+    function setZoom(newLevel) {
+      // Keeps the same spot of the page in the middle of the screen while zooming
+      // (|| 1 avoids dividing by 0 while the image hasn't loaded yet)
+      const centerX = (screen.scrollLeft + screen.clientWidth / 2) / (screen.scrollWidth || 1);
+      const centerY = (screen.scrollTop + screen.clientHeight / 2) / (screen.scrollHeight || 1);
+
+      level = Math.max(0, Math.min(ZOOM_LEVELS.length - 1, newLevel));
+      image.style.width = `${ZOOM_LEVELS[level] * 100}%`;
+      viewer.classList.toggle("is-zoomed", level > 0);
+
+      screen.scrollLeft = centerX * screen.scrollWidth - screen.clientWidth / 2;
+      screen.scrollTop = centerY * screen.scrollHeight - screen.clientHeight / 2;
+
+      zoomLabel.textContent = `${ZOOM_LEVELS[level] * 100}%`;
+      zoomOut.disabled = level === 0;
+      zoomIn.disabled = level === ZOOM_LEVELS.length - 1;
+    }
+
+    zoomOut.addEventListener("click", () => setZoom(level - 1));
+    zoomIn.addEventListener("click", () => setZoom(level + 1));
+    setZoom(0);
+
+    // Zoomed in: drag the page with the mouse to move around
+    // (touch screens already scroll with the finger)
+    let drag = null;
+    screen.addEventListener("pointerdown", (event) => {
+      if (level === 0 || event.pointerType !== "mouse" || event.button !== 0) return;
+      drag = { x: event.clientX, y: event.clientY, left: screen.scrollLeft, top: screen.scrollTop };
+      screen.classList.add("is-dragging");
+      screen.setPointerCapture(event.pointerId);
+      event.preventDefault();   // no image "ghost" drag
+    });
+    screen.addEventListener("pointermove", (event) => {
+      if (!drag) return;
+      screen.scrollLeft = drag.left - (event.clientX - drag.x);
+      screen.scrollTop = drag.top - (event.clientY - drag.y);
+    });
+    const endDrag = () => {
+      drag = null;
+      screen.classList.remove("is-dragging");
+    };
+    screen.addEventListener("pointerup", endDrag);
+    screen.addEventListener("pointercancel", endDrag);
+
+    // Full screen: the real Fullscreen API when the browser has it,
+    // otherwise (e.g. iPhone) the mockup simply covers the whole window
+    const isFull = () =>
+      (document.fullscreenElement || document.webkitFullscreenElement) === viewer ||
+      viewer.classList.contains("is-expanded");
+
+    function exitFull() {
+      if (viewer.classList.contains("is-expanded")) {
+        viewer.classList.remove("is-expanded");
+        onFullChange();
+      } else {
+        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      }
+    }
+
+    function onFullChange() {
+      const full = isFull();
+      fullscreenButton.setAttribute("aria-label", full ? "Exit full screen" : "Full screen");
+      fullscreenButton.innerHTML = full
+        ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg>'
+        : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+      if (full) screen.focus({ preventScroll: true });   // arrow keys scroll the mockup right away
+    }
+
+    fullscreenButton.addEventListener("click", () => {
+      if (isFull()) {
+        exitFull();
+      } else if (enterFullscreen) {
+        enterFullscreen.call(viewer);
+      } else {
+        viewer.classList.add("is-expanded");
+        onFullChange();
+      }
+    });
+
+    document.addEventListener("fullscreenchange", onFullChange);
+    document.addEventListener("webkitfullscreenchange", onFullChange);
+    // Escape closes the window-sized version (the real full screen handles it by itself)
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && viewer.classList.contains("is-expanded")) exitFull();
+    });
+  });
+
+
+  /* ---------- 7. Sticky stepper that follows the reading ---------- */
 
   const stepper = document.querySelector(".stepper");
 
@@ -200,19 +302,36 @@
     const links = items.map((item) => item.querySelector(".stepper__link"));
     const sections = links.map((link) => document.querySelector(link.hash));
     let ticking = false;
+    let fullHeight = 0;      // stepper height in the page
+    let compactHeight = 0;   // smaller stepper height once stuck under the nav
+
+    // Measures both sizes of the stepper (again when the screen size changes)
+    function measureStepper() {
+      const wasStuck = stepper.classList.contains("is-stuck");
+      stepper.style.marginBottom = "";
+      stepper.classList.add("is-stuck");
+      compactHeight = stepper.offsetHeight;
+      stepper.classList.remove("is-stuck");
+      fullHeight = stepper.offsetHeight;
+      stepper.classList.toggle("is-stuck", wasStuck);
+
+      // Used in CSS so the sections stop right under the (compact) stepper when clicked
+      document.documentElement.style.setProperty("--stepper-height", `${compactHeight}px`);
+    }
 
     function updateStepper() {
       const headerHeight = siteHeader.offsetHeight;
-      const stepperHeight = stepper.offsetHeight;
       const rect = stepper.getBoundingClientRect();
 
-      // Used in CSS so the sections stop right under the stepper when clicked
-      document.documentElement.style.setProperty("--stepper-height", `${stepperHeight}px`);
-
-      // Stuck under the nav: one shadow for both, under the stepper
+      // Stuck under the nav: compact stepper, one shadow for both
       const isStuck = rect.top <= headerHeight + 1 && rect.bottom > headerHeight;
       stepper.classList.toggle("is-stuck", isStuck);
       siteHeader.classList.toggle("is-merged", isStuck);
+
+      // An invisible margin makes up for the smaller size,
+      // so the page content doesn't jump when the stepper shrinks
+      stepper.style.marginBottom = isStuck ? `${fullHeight - compactHeight}px` : "";
+      const stepperHeight = isStuck ? compactHeight : fullHeight;
 
       // The current step is the last section whose top passed a line
       // a third of the way down the visible area
@@ -240,7 +359,16 @@
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", () => {
+      measureStepper();
+      onScroll();
+    });
+    // Fonts change the label sizes once loaded
+    document.fonts.ready.then(() => {
+      measureStepper();
+      updateStepper();
+    });
+    measureStepper();
     updateStepper();
   }
 })();

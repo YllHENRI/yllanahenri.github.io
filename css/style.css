@@ -944,7 +944,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   background: #E9E7F1;
 }
 
-.browser__bar span {
+.browser__bar > span {
   width: 10px; height: 10px;
   border-radius: 50%;
   background: rgba(60, 63, 124, 0.25);
@@ -964,9 +964,82 @@ ul { list-style: none; margin: 0; padding: 0; }
   background: var(--color-secondary);
 }
 
-.browser__screen img { width: 100%; height: auto; }
+.browser__screen img { width: 100%; height: auto; max-width: none; }
 
 .browser__screen:focus-visible { outline-offset: -3px; }
+
+/* ---------- Mockup with zoom + full screen ([data-viewer]) ---------- */
+.browser[data-viewer] .browser__bar { height: 40px; }
+
+.browser__tools {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.browser__tool {
+  display: grid;
+  place-items: center;
+  width: 28px; height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease);
+}
+
+.browser__tool:hover:not(:disabled) { background: var(--color-secondary); }
+.browser__tool:disabled { opacity: 0.35; cursor: default; }
+
+.browser__tool svg {
+  width: 16px; height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The full screen button stands a bit apart from the zoom */
+.browser__tool[data-fullscreen] { margin-left: 6px; }
+
+.browser__zoom {
+  min-width: 3rem;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--color-text);
+}
+
+/* Zoomed in: the page also scrolls sideways, and can be dragged with the mouse */
+.browser[data-viewer] .browser__screen { overflow: auto; }
+.browser.is-zoomed .browser__screen { cursor: grab; }
+.browser.is-zoomed .browser__screen.is-dragging { cursor: grabbing; user-select: none; }
+
+/* Full screen (real one, or the window-sized fallback for iPhone) */
+.browser[data-viewer]:fullscreen,
+.browser.is-expanded {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+}
+
+.browser.is-expanded {
+  position: fixed;
+  inset: 0;
+  z-index: 200;            /* above the nav and the stepper */
+}
+
+.browser[data-viewer]:fullscreen .browser__screen,
+.browser.is-expanded .browser__screen {
+  flex: 1;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+
+/* No page scroll behind the window-sized mockup */
+body:has(.browser.is-expanded) { overflow: hidden; }
 
 /* ---------- Quote ---------- */
 .cs-quote {
@@ -1033,6 +1106,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 /* ---------- Sticky stepper ---------- */
 .stepper {
   --circle: 56px;
+  --circle-compact: 36px;   /* circle size once stuck under the nav */
   position: sticky;
   top: var(--header-height);
   z-index: 90;
@@ -1042,6 +1116,20 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 .stepper.is-stuck { box-shadow: 0 4px 20px rgba(60, 63, 124, 0.08); }
+
+/* Compact version once stuck: smaller circles, labels on one small line */
+.stepper.is-stuck {
+  --circle: var(--circle-compact);
+  padding-block: 0.5rem;
+}
+
+.stepper.is-stuck .stepper__link { gap: 0.3rem; }
+
+.stepper.is-stuck .stepper__label {
+  max-width: none;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
 
 /* The nav drops its own shadow while the stepper is stuck under it */
 .site-header.is-merged { box-shadow: none; }
@@ -1406,6 +1494,7 @@ body:has(.lightbox[open]) { overflow: hidden; }
 
   .stepper { --circle: 48px; }
   .stepper__label { font-size: 0.85rem; max-width: 7rem; }
+  .stepper.is-stuck .stepper__label { max-width: 7rem; font-size: 0.75rem; white-space: normal; }
 
   .slider__stage { gap: 1rem; }
   .slider--cards { --per-view: 2; --gap: 1.5rem; }
@@ -1513,7 +1602,7 @@ body:has(.lightbox[open]) { overflow: hidden; }
   .cs-goals { margin-top: 2rem; }
 
   /* Stepper: icons only, the step titles are in the banners */
-  .stepper { --circle: 38px; padding-block: 0.75rem; }
+  .stepper { --circle: 38px; --circle-compact: 30px; padding-block: 0.75rem; }
   .stepper__item + .stepper__item::before {
     left: calc(-50% + var(--circle) / 2 + 4px);
     right: calc(50% + var(--circle) / 2 + 4px);
