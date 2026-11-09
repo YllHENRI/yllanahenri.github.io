@@ -86,3 +86,27 @@ if (!reduceMotion && patterns.length) {
   window.addEventListener("resize", onScroll);
   updateParallax();
 }
+
+
+/* ---------- 4. "Back to top" button (added to every page) ---------- */
+
+// Create the button here, so every page that loads main.js gets it
+const backToTop = document.createElement("button");
+backToTop.type = "button";
+backToTop.className = "back-to-top";
+backToTop.setAttribute("aria-label", "Back to top");
+backToTop.innerHTML =
+  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+document.body.appendChild(backToTop);
+
+// Show it only once the user has scrolled down a bit
+const toggleBackToTop = () => {
+  backToTop.classList.toggle("is-visible", window.scrollY > 600);
+};
+window.addEventListener("scroll", toggleBackToTop, { passive: true });
+toggleBackToTop();
+
+// Scroll smoothly back up (instantly for users who prefer less motion)
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+});

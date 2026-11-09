@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Altered UX Research – Yllana Henri, UI/UX Designer</title>
+  <meta name="description" content="UX Research case study: how players of the phygital trading card game Altered manage their card collections, from hypotheses and interviews to recommendations.">
+
+  <!-- Fonts: Syne (titles) + Lato (text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Syne:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- "defer" = the scripts run once the page is loaded -->
+  <script src="../js/main.js" defer></script>
+  <script src="../js/case-study.js" defer></script>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION (fixed at the top) ============ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="../index.html" class="nav__logo" aria-label="Yllana Henri – Home">
+        <img src="../images/Logo_Kitsu.png" alt="" width="44" height="44">
+      </a>
+
+      <!-- Burger button, only visible on mobile -->
+      <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="sr-only">Open menu</span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="../index.html" class="nav__link">Home</a></li>
+        <li><a href="../about.html" class="nav__link">About</a></li>
+        <li><a href="../resume.pdf" class="btn btn--secondary" target="_blank" rel="noopener">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- cs--flat: no mockup hanging below the hero -->
+  <main class="cs cs--flat">
+
+    <!-- ============ HERO (full illustration, no mockup) ============ -->
+    <!-- The background image is set in css/style.css, in ".cs-hero--altered" -->
+    <section class="cs-hero cs-hero--cover cs-hero--altered">
+      <div class="container cs-hero__inner">
+        <h1 class="cs-hero__title">Altered - UX Research</h1>
+        <ul class="tags tags--hero" aria-label="Project tags">
+          <li class="tag">UX Research</li>
+          <li class="tag">Interviews</li>
+          <li class="tag">Qualitative Analysis</li>
+          <li class="tag">Insight Synthesis</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ OVERVIEW ============ -->
+    <section class="container cs-block cs-overview" aria-labelledby="overview-title">
+      <div class="cs-overview__intro">
+        <h2 id="overview-title" class="cs-title">Overview</h2>
+        <p>Altered® is a <strong>phygital trading card game</strong>, launched in September 2024, that links a physical card collection to a digital app.</p>
+        <p>As part of our <strong>UX Research coursework</strong>, my classmate and I chose to investigate how players actually <strong>manage their card collections across both formats</strong>, physical and digital, and how that connects to deck-building, a closely related activity.</p>
+        <p><strong>This case study focuses on the research process</strong>: from hypotheses and interviews to synthesis and recommendations.</p>
+      </div>
+
+      <div class="cs-summary">
+        <div class="cs-summary__item">
+          <h3 class="cs-label-title">Role</h3>
+          <p>UX Researcher (paired with equal responsibilities; interviews, recruitment, protocol design, data analysis, and recommendations were fully shared with my classmate)</p>
+        </div>
+        <div class="cs-summary__item">
+          <h3 class="cs-label-title">Timeline</h3>
+          <p>2 weeks</p>
+        </div>
+        <div class="cs-summary__item">
+          <h3 class="cs-label-title">Context</h3>
+          <p>Academic project for the UX Research course at École Supérieure du Digital (ESD)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Everything inside .cs-body keeps the stepper stuck under the nav -->
+    <div class="cs-body">
+
+      <!-- ============ STEPPER (sticky, highlights the current step) ============ -->
+      <nav class="stepper" aria-label="Case study steps">
+        <ol class="stepper__list container">
+          <li class="stepper__item">
+            <a href="#context" class="stepper__link">
+              <span class="stepper__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+              <span class="stepper__label">Context &amp; Hypothesis</span>
+            </a>
+          </li>
+          <li class="stepper__item">
+            <a href="#recruitment" class="stepper__link">
+              <span class="stepper__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.7a3.5 3.5 0 0 1 0 6.6M18.5 14.5c1.9.8 3 2.8 3 5.5"/></svg></span>
+              <span class="stepper__label">Recruitment</span>
+            </a>
+          </li>
+          <li class="stepper__item">
+            <a href="#findings" class="stepper__link">
+              <span class="stepper__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 21h4"/></svg></span>
+              <span class="stepper__label">Findings</span>
+            </a>
+          </li>
+          <li class="stepper__item">
+            <a href="#recommendations" class="stepper__link">
+              <span class="stepper__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h3l6 4V6l-6 4H3zM16 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11"/></svg></span>
+              <span class="stepper__label">Recommendations</span>
+            </a>
+          </li>
+          <li class="stepper__item">
+            <a href="#conclusion" class="stepper__link">
+              <span class="stepper__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></span>
+              <span class="stepper__label">Reflection &amp; Conclusion</span>
+            </a>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- ============ 1. CONTEXT & HYPOTHESIS ============ -->
+      <section id="context" class="cs-step" aria-labelledby="context-title">
+        <div class="banner">
+          <h2 id="context-title" class="banner__title">Context &amp; Hypothesis</h2>
+        </div>
+
+        <div class="cs-wide-image">
+          <img src="../images/Altered/context.jpg" alt="" loading="lazy">
+        </div>
+
+        <div class="container cs-block">
+          <p class="cs-text-wide">Altered’s <strong>phygital model is still new</strong>, and its approach to helping players manage a collection across two formats hadn’t been closely studied. We wanted to understand whether this dual system created friction, confusion, or whether players found real value in it.</p>
+
+          <h3 class="cs-subtitle">Hypothesis</h3>
+          <p class="cs-text-wide">We defined five hypotheses to guide our research, each paired with measurable indicators:</p>
+
+          <ul class="cs-hypotheses">
+            <li class="cs-hypothesis">
+              <span class="cs-hypothesis__label">Hypothesis 1</span>
+              <p>A <strong>mismatch</strong> between physical and digital cards may cause users to <strong>lose track</strong> of their own collection.</p>
+            </li>
+            <li class="cs-hypothesis">
+              <span class="cs-hypothesis__label">Hypothesis 2</span>
+              <p><strong>Finding a specific card</strong>, either in the physical or digital collection, may be difficult.</p>
+            </li>
+            <li class="cs-hypothesis">
+              <span class="cs-hypothesis__label">Hypothesis 3</span>
+              <p>Users may be <strong>demotivated by the sheer number</strong> of cards to manage.</p>
+            </li>
+            <li class="cs-hypothesis">
+              <span class="cs-hypothesis__label">Hypothesis 4</span>
+              <p>Altered’s proposed storage method <strong>may not actually help</strong> players manage their collection.</p>
+            </li>
+            <li class="cs-hypothesis">
+              <span class="cs-hypothesis__label">Hypothesis 5</span>
+              <p>The <strong>phygital aspect may attract new players</strong> specifically because of its “modern” and “innovative” feel.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ 2. RECRUITMENT ============ -->
+      <section id="recruitment" class="cs-step" aria-labelledby="recruitment-title">
+        <div class="banner">
+          <h2 id="recruitment-title" class="banner__title">Recruitment</h2>
+        </div>
+
+        <div class="container cs-block cs-logo-split">
+          <div class="cs-logo-split__logo">
+            <img src="../images/Altered/discord.png" alt="Discord" loading="lazy">
+          </div>
+          <div>
+            <p>We recruited participants directly from <strong>Altered’s official Discord community</strong>. It was the fastest way to reach active, engaged players and make our call for participants clearly visible.</p>
+            <p>Of the <strong>10 participants</strong> that answered our call, one was interviewed in person (our professor, an Altered player himself); the rest were remote, since participants were located <strong>across France and one in Quebec</strong>.</p>
+          </div>
+        </div>
+
+        <div class="container cs-block cs-split cs-split--top">
+          <div class="cs-split__text">
+            <h3 class="cs-label-title">Who we talked to</h3>
+            <p>All 10 participants were <strong>men aged 18-54</strong>, with a wide range of life contexts and play styles: <strong>students</strong> on a tight budget, <strong>fathers</strong> who played with their spouse and children, <strong>casual players</strong>, and <strong>dedicated collectors</strong>. Most were based in France; one was in Quebec.</p>
+
+            <h3 class="cs-label-title cs-label-title--spaced">Test format</h3>
+            <p>Each session lasted between <strong>40 minutes and 1h30 and followed a 3-step structure</strong>:</p>
+            <p>An <strong>introductory interview</strong> (5-10 min) covering tech comfort level and card-game experience, <strong>scenario-based user tests</strong> (30-40 min covering physical card management, digital card management, and deck building), and a <strong>closing interview with open-ended questions</strong> (it was supposed to last 10-20 min but it was at this moment that we often ended up engaging in very interesting conversations with the participants, diving deeper into their visions of the game and feedback).</p>
+          </div>
+
+          <figure class="cs-split__media">
+            <!-- PDF reader: put your file in /docs and update BOTH paths below (iframe src + full screen link) -->
+            <div class="prototype prototype--pdf">
+              <iframe src="../docs/altered-research-protocol.pdf#view=FitH" title="Research protocol of the Altered UX Research study (PDF)" loading="lazy"></iframe>
+              <a href="../docs/altered-research-protocol.pdf" class="prototype__fullscreen" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                <span class="prototype__fullscreen-label">Full screen</span>
+              </a>
+            </div>
+            <!-- Some phones can't show a PDF inside the page: this link always works -->
+            <figcaption class="cs-caption">Can’t see the document? <a href="../docs/altered-research-protocol.pdf" target="_blank" rel="noopener" class="cs-link">Open the PDF</a></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ 3. FINDINGS ============ -->
+      <section id="findings" class="cs-step" aria-labelledby="findings-title">
+        <div class="banner">
+          <h2 id="findings-title" class="banner__title">Findings</h2>
+        </div>
+
+        <div class="container cs-block cs-accordion-split">
+          <div>
+            <h3 class="cs-subtitle">Hypothesis check</h3>
+            <p>After conducting all 10 interviews, we went back through our five initial hypotheses to see which held up against what players actually told us.</p>
+            <p>Interestingly, <strong>most of our assumptions about user frustration didn’t hold</strong>. Indeed, players turned out to be <strong>far more resourceful and at ease</strong> with managing a phygital collection than we expected. The two hypotheses that were confirmed pointed less to confusion, and more to Altered’s own tools not quite matching how players already organize their collections.</p>
+            <p>Below is what we found for each hypothesis, illustrated with real feedback from participants.</p>
+          </div>
+
+          <!-- <details> = dropdowns: several can be open at the same time.
+               Add or remove "open" to choose which ones are open when the page loads. -->
+          <div class="accordions">
+            <details class="accordion" open>
+              <summary class="accordion__summary">
+                <span class="accordion__heading">
+                  <span class="accordion__eyebrow">Hypothesis 1</span>
+                  <h4 class="accordion__title">Mismatch between physical and digital collections</h4>
+                </span>
+                <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="accordion__body">
+                <p><strong>Result:</strong> <em>Not confirmed</em>. Participants didn’t feel particularly disturbed by the phygital aspect of the game. When it came to gifting or trading cards, most relied on external tools like Excel or Google Sheets to track their collection rather than feeling lost.</p>
+                <p class="accordion__quote">“It’s great to have your collection in the app, but it still lacks some tracking.”</p>
+              </div>
+            </details>
+
+            <details class="accordion">
+              <summary class="accordion__summary">
+                <span class="accordion__heading">
+                  <span class="accordion__eyebrow">Hypothesis 2</span>
+                  <h4 class="accordion__title">Difficulty finding a specific card</h4>
+                </span>
+                <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="accordion__body">
+                <p><strong>Result:</strong> <em>Not confirmed</em>. Participants knew their collections very well and could easily locate cards, whether physical or digital.</p>
+                <p class="accordion__quote">“To find a physical card, I know my binder well, so I search by hand directly.”</p>
+              </div>
+            </details>
+
+            <details class="accordion">
+              <summary class="accordion__summary">
+                <span class="accordion__heading">
+                  <span class="accordion__eyebrow">Hypothesis 3</span>
+                  <h4 class="accordion__title">Demotivation from managing card quantity</h4>
+                </span>
+                <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="accordion__body">
+                <p><strong>Result:</strong> <em>Not confirmed</em>. Users weren’t demotivated at all. Some genuinely enjoyed the collecting aspect, while others simply lent or gave away cards they no longer needed.</p>
+                <p class="accordion__quote">“I have one binder for uniques and the rest in other binders. I’m planning to buy new binders for new sets, with one binder per set!”</p>
+              </div>
+            </details>
+
+            <details class="accordion">
+              <summary class="accordion__summary">
+                <span class="accordion__heading">
+                  <span class="accordion__eyebrow">Hypothesis 4</span>
+                  <h4 class="accordion__title">Altered’s storage method doesn’t help collection management</h4>
+                </span>
+                <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="accordion__body">
+                <p><strong>Result:</strong> <em>Confirmed</em>. Users don’t use Altered’s proposed storage solutions, finding them too expensive and poorly suited to their collection. They prefer external storage like boxes or binders that better match their needs.</p>
+                <p class="accordion__quote">“I bought a binder made by Altered, but I found it wasn’t suited… you can’t even store a full set because there isn’t enough room.”</p>
+              </div>
+            </details>
+
+            <details class="accordion">
+              <summary class="accordion__summary">
+                <span class="accordion__heading">
+                  <span class="accordion__eyebrow">Hypothesis 5</span>
+                  <h4 class="accordion__title">Phygital management attracts new players</h4>
+                </span>
+                <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="accordion__body">
+                <p><strong>Result:</strong> <em>Confirmed</em>. Users genuinely like the phygital concept, especially for how it simplifies deck building. The bulk physical-card scanning feature was particularly well received.</p>
+                <p class="accordion__quote">“I build my deck by hand first with my physical cards, and then scan them all at once to get my deck in the app!”</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- Cross-analysis: title on the left, text on the right -->
+        <div class="container cs-block cs-side-title">
+          <h3 class="cs-subtitle">Cross-Analysis</h3>
+          <div>
+            <p>Beyond testing our initial hypotheses, we wanted to understand why certain patterns emerged, specifically, whether a participant’s tech comfort, card-game experience, or collector/player mindset shaped how they interacted with their collection.</p>
+            <p>Crossing these variables against our findings surfaced some interesting nuances that a single-pass analysis would have missed.</p>
+          </div>
+        </div>
+
+        <div class="container cs-block cs-cols cs-cols--2">
+          <article class="cs-col">
+            <h4 class="cs-col__title">Tech comfort vs. behavior</h4>
+            <p>All participants <strong>rated themselves between 1-2 on a 7-point difficulty scale for everyday tech use</strong>, so we couldn’t meaningfully compare tech comfort levels between them. But notably, every participant, regardless of comfort level, reported something that frustrated them about the app.</p>
+          </article>
+          <article class="cs-col">
+            <h4 class="cs-col__title">Card game experience vs. deck building behavior</h4>
+            <p>Players with <strong>little to no prior card-game experience were more likely to rely on external tools</strong> for deck building. <strong>Experienced card-game players were more forgiving</strong> of the app’s limitations: even when aware of its flaws, they were more accepting of the interface as given.</p>
+          </article>
+          <article class="cs-col">
+            <h4 class="cs-col__title">Experience vs. digital collection management</h4>
+            <p>Regardless of experience level, <strong>100% of participants found duplicate cards across different editions genuinely frustrating</strong>. More experienced players were additionally bothered by missing cards not being clearly flagged, and by cards owned in fewer than 3 copies not being clearly indicated.</p>
+          </article>
+          <article class="cs-col">
+            <h4 class="cs-col__title">Experience vs. physical collection management</h4>
+            <p>Storage method (box vs. binder) didn’t correlate with experience. It was more a matter of <strong>personal preference</strong>. However, “collector” profiles tended to meticulously organize everything, while “player” profiles tended to set decks aside separately from the rest of their cards, even if still carefully sorted.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ 4. RECOMMENDATIONS ============ -->
+      <section id="recommendations" class="cs-step" aria-labelledby="recommendations-title">
+        <div class="banner">
+          <h2 id="recommendations-title" class="banner__title">Recommendations</h2>
+        </div>
+
+        <div class="container cs-block cs-accordion-split">
+          <div>
+            <p>Drawing from our findings, we grouped our recommendations by collection type, focusing on the areas where Altered’s current tools fell short of how players actually manage their cards.</p>
+          </div>
+
+          <div class="accordions">
+            <details class="accordion" open>
+              <summary class="accordion__summary">
+                <span class="accordion__heading">
+                  <h3 class="accordion__title">Physical collection: Storage</h3>
+                </span>
+                <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="accordion__body">
+                <p class="accordion__problem">Problem: Altered’s proposed storage material isn’t used, as players find it poorly suited to their needs.</p>
+                <ul class="bullet-list">
+                  <li>Run <strong>user tests</strong> to design a storage tool based on how players actually organize and use their cards.</li>
+                  <li>Reconsider storage design around the cards’ own characteristics, rather than defaulting to conventional storage formats.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion">
+              <summary class="accordion__summary">
+                <span class="accordion__heading">
+                  <h3 class="accordion__title">Digital collection: Search</h3>
+                </span>
+                <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="accordion__body">
+                <p class="accordion__problem">Problem: Existing search functions don’t sufficiently help users find their cards.</p>
+                <ul class="bullet-list">
+                  <li>Offer more filters for advanced search.</li>
+                  <li>Optimize sorting methods to avoid bugs and inconsistent display.</li>
+                  <li>Support advanced search by effect or keyword, not just card name.</li>
+                  <li>Make search less rigid, offering suggestions based on what the user types rather than exact matches only.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion">
+              <summary class="accordion__summary">
+                <span class="accordion__heading">
+                  <h3 class="accordion__title">Digital collection: Interface</h3>
+                </span>
+                <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="accordion__body">
+                <p class="accordion__problem">Problem: The collection’s interface doesn’t support easy visualization.</p>
+                <ul class="bullet-list">
+                  <li>Consolidate duplicate cards into a single grouped entry, rather than displaying each edition separately.</li>
+                  <li>Let users choose if they wish to sort their cards by card name or by edition.</li>
+                  <li>Reflect which cards are already owned directly within the display.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion">
+              <summary class="accordion__summary">
+                <span class="accordion__heading">
+                  <h3 class="accordion__title">Digital collection: Deck building</h3>
+                </span>
+                <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="accordion__body">
+                <p class="accordion__problem">Problem: Editing a decklist isn’t intuitive.</p>
+                <ul class="bullet-list">
+                  <li>Build a more complete onboarding flow for deck building.</li>
+                  <li>Let users choose to build a deck using only cards they currently own.</li>
+                  <li>Surface commonly used cards more prominently.</li>
+                  <li>Improve online deck-copying, with support for importing multiple list formats.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion">
+              <summary class="accordion__summary">
+                <span class="accordion__heading">
+                  <h3 class="accordion__title">Digital collection: Trading &amp; Gifting</h3>
+                </span>
+                <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </summary>
+              <div class="accordion__body">
+                <p class="accordion__problem">Problem: The trade and gift function is unintuitive and impractical.</p>
+                <ul class="bullet-list">
+                  <li>Let users track their trade and gift history (incoming/outgoing).</li>
+                  <li>Consider a dedicated platform for trading and gifting.</li>
+                  <li>Remove limits on the number of gifts a user can send.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 5. REFLECTION & CONCLUSION ============ -->
+      <section id="conclusion" class="cs-step" aria-labelledby="conclusion-title">
+        <div class="banner">
+          <h2 id="conclusion-title" class="banner__title">Reflection &amp; Conclusion</h2>
+        </div>
+
+        <div class="cs-wide-image">
+          <img src="../images/Altered/conclusion.jpg" alt="" loading="lazy">
+        </div>
+
+        <div class="container cs-block">
+          <div class="cs-text-wide">
+            <p>Our research led us to a <strong>nuanced picture of Altered’s collection-management experience</strong>: the app is “good enough” for now, but doesn’t yet offer the advanced options that the game’s full complexity calls for.</p>
+            <p>We identified a number of bugs, and the app can fairly be described as lacking optimization in places.</p>
+            <p>At the same time, we found a player base that is extremely invested. Invested enough that some players have already built their own external tools to better meet their needs, which is itself one of the clearest signals of where the product still falls short.</p>
+          </div>
+        </div>
+
+        <div class="container cs-block cs-side-title">
+          <h3 class="cs-subtitle">Learnings &amp; Takeaways</h3>
+          <div>
+            <p>This project was a genuine introduction to <strong>running a full research study end-to-end</strong>. From writing hypotheses and a test protocol, to recruiting real, currently active players, to synthesizing qualitative data into concrete recommendations.</p>
+            <p>Recruiting through Discord taught us how to move quickly to reach an engaged, relevant audience, even without a large existing network. And interviewing players across different countries pushed us to run consistent, well-structured remote sessions.</p>
+            <p><strong>One of the more interesting lessons was watching our own assumptions get overturned</strong>: most of our hypotheses about user frustration didn’t hold up, which was a good reminder that research exists precisely to test assumptions, not confirm them.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============ READ MORE (filled by js/case-study.js from the list of online case studies) ============ -->
+    <section class="container cs-more" aria-labelledby="more-title">
+      <h2 id="more-title" class="cs-more__title">Read more of my case studies</h2>
+      <div class="slider slider--cards" data-slider aria-roledescription="carousel" aria-label="Other case studies">
+        <div class="slider__stage">
+          <button type="button" class="slider__arrow slider__arrow--prev" aria-label="Previous case studies"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+          <div class="slider__track" id="more-case-studies" data-current="altered-ux-research" data-root="../"></div>
+          <button type="button" class="slider__arrow slider__arrow--next" aria-label="Next case studies"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+        <div class="slider__dots"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__left">
+        <a href="../index.html" class="site-footer__brand">
+          <img src="../images/Logo_Kitsu.png" alt="" width="36" height="36">
+          <span>Yllana HENRI</span>
+        </a>
+        <ul class="site-footer__links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+      </div>
+      <!-- Replace the href with your LinkedIn profile URL -->
+      <a href="https://www.linkedin.com/in/your-profile" class="site-footer__social" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
